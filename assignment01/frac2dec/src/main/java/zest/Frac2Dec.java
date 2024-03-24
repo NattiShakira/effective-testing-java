@@ -5,6 +5,7 @@ import java.util.HashMap;
 class Frac2Dec {
 
     public static String fractionToDecimal(int numerator, int denominator) {
+        if (denominator == 0) return null;
         if (numerator == 0) return "0";
 
         StringBuilder res = new StringBuilder();
@@ -24,7 +25,7 @@ class Frac2Dec {
         res.append(".");
         HashMap<Long, Integer> map = new HashMap<Long, Integer>();
         map.put(num, res.length());
-        while (num != 0) {
+        while (num != 0 && res.length() < 103) {
             num *= 10;
             res.append(num / den);
             num %= den;

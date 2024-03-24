@@ -84,7 +84,7 @@ class CombinationSumTest {
 
     //test just asserts the class gets instantiated, makes it so lines and branches are 100% covered by testing the constructor
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         CombinationSum testInstance = new CombinationSum();
         assertTrue(testInstance instanceof CombinationSum);
     }
