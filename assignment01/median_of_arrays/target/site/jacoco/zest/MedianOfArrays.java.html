@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MedianOfArrays.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">median-of-arrays</a> &gt; <a href="index.source.html" class="el_package">zest</a> &gt; <span class="el_source">MedianOfArrays.java</span></div><h1>MedianOfArrays.java</h1><pre class="source lang-java linenums">package zest;
+
+<span class="fc" id="L3">class MedianOfArrays {</span>
+<span class="fc" id="L4">    private int p1 = 0, p2 = 0;</span>
+
+    private int getMin(int[] nums1, int[] nums2) {
+<span class="fc bfc" id="L7" title="All 4 branches covered.">        if (p1 &lt; nums1.length &amp;&amp; p2 &lt; nums2.length) {</span>
+<span class="fc bfc" id="L8" title="All 2 branches covered.">            return nums1[p1] &lt; nums2[p2] ? nums1[p1++] : nums2[p2++];</span>
+<span class="fc bfc" id="L9" title="All 2 branches covered.">        } else if (p1 &lt; nums1.length) {</span>
+<span class="fc" id="L10">            return nums1[p1++];</span>
+<span class="fc bfc" id="L11" title="All 2 branches covered.">        } else if (p2 &lt; nums2.length) {</span>
+<span class="fc" id="L12">            return nums2[p2++];</span>
+        }
+<span class="fc" id="L14">        return -1;</span>
+    }
+
+    public boolean isArraySortedAscending(int[] array) {
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        for (int i = 0; i &lt; array.length - 1; i++) {</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">            if (array[i] &gt; array[i + 1]) {</span>
+<span class="fc" id="L20">                return false;</span>
+            }
+        }
+
+<span class="fc" id="L24">        return true;</span>
+    }
+
+
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+<span class="fc bfc" id="L29" title="All 4 branches covered.">        if (nums1==null || nums2==null) return 0;</span>
+<span class="fc bfc" id="L30" title="All 4 branches covered.">        if (!isArraySortedAscending(nums1) || !isArraySortedAscending(nums2)) return 0;</span>
+<span class="fc" id="L31">        int m = nums1.length, n = nums2.length;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if ((m + n) % 2 == 0) {</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">            for (int i = 0; i &lt; (m + n) / 2 - 1; ++i) {</span>
+<span class="fc" id="L34">                getMin(nums1, nums2);</span>
+            }
+<span class="fc" id="L36">            return (double)(getMin(nums1, nums2) + getMin(nums1, nums2)) / 2;</span>
+        } else {
+<span class="fc bfc" id="L38" title="All 2 branches covered.">            for (int i = 0; i &lt; (m + n) / 2; ++i) {</span>
+<span class="fc" id="L39">                getMin(nums1, nums2);</span>
+            }
+<span class="fc" id="L41">            return getMin(nums1, nums2);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
