@@ -16,7 +16,7 @@ class MedianOfArrays {
 
     public boolean isArraySortedAscending(int[] array) {
         for (int i = 0; i < array.length - 1; i++) {
-            if (array[i] >= array[i + 1]) {
+            if (array[i] > array[i + 1]) {
                 return false;
             }
         }
@@ -31,12 +31,12 @@ class MedianOfArrays {
         int m = nums1.length, n = nums2.length;
         if ((m + n) % 2 == 0) {
             for (int i = 0; i < (m + n) / 2 - 1; ++i) {
-                int tmp = getMin(nums1, nums2);
+                getMin(nums1, nums2);
             }
             return (double)(getMin(nums1, nums2) + getMin(nums1, nums2)) / 2;
         } else {
             for (int i = 0; i < (m + n) / 2; ++i) {
-                int tmp = getMin(nums1, nums2);
+                getMin(nums1, nums2);
             }
             return getMin(nums1, nums2);
         }
