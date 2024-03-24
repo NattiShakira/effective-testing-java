@@ -1,3 +1,4 @@
+## Specification-based testing
 ### 1. Understanding the requirements, inputs, outputs
 #### Business Rules
 The core functionality of the programs is to determine if an integer x is a palindrome. This involves checking whether x reads the same backward as forward. A palindrome remains unchanged when reversed. Moreover, negative numbers are not considered palindromes due to the negative sign affecting symmetry.
@@ -166,7 +167,7 @@ A test has been developed and tested to solve it: assertTrue(PalindromeTwo.isPal
 
 With these new two tests, for the `isPalindrome(int)` method, branch coverage reached 100%.
 
-In order to assure also branch coverage is reached, the test approved that each of the individual conditions are being evaluated to true and false at least once and the entire branch is being true and false at least once.
+In order to assure that branch+condition coverage is reached, the test approved that each of the individual conditions are being evaluated to true and false at least once and the entire branch is being true and false at least once.
 ## Mutation testing
 Mutation testing was performed using PITest to evaluate the robustness of the test suite for the palindrome checking methods in `PalindromeOne` and `PalindromeTwo`.
 
