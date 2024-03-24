@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/assignment01/combination_sum/combination-sum.iml" filepath="$PROJECT_DIR$/assignment01/combination_sum/combination-sum.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/effective-testing-g15.iml" filepath="$PROJECT_DIR$/.idea/effective-testing-g15.iml" />
+      <module fileurl="file://$PROJECT_DIR$/assignment01/frac2dec/frac-2-dec.iml" filepath="$PROJECT_DIR$/assignment01/frac2dec/frac-2-dec.iml" />
     </modules>
   </component>
 </project>
