@@ -7,14 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="frac-2-dec" />
-        <module name="maximum-subarray" />
+        <module name="palindrome" />
         <module name="combination-sum" />
+        <module name="atoi-test" />
+        <module name="maximum-subarray" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="combination-sum" target="11" />
-      <module name="frac-2-dec" target="11" />
-      <module name="maximum-subarray" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>
