@@ -52,6 +52,16 @@ class CombinationSumTest {
         assertTrue(CombinationSum.combinationSum(new int[]{0}, 7).isEmpty());
     }
 
+    @Test
+    void testDuplicateCandidates(){
+        assertEquals(List.of(List.of(2, 2, 3), List.of(7)), CombinationSum.combinationSum(new int[]{2, 2, 3, 7, 7}, 7));
+    }
+
+    @Test
+    void testTooManyCombinations(){
+        assertTrue(((CombinationSum.combinationSum(new int[]{1, 2, 3, 4, 6, 8, 12, 16, 24}, 48)).size()) < 150);
+    }
+
 
     @Test
     void testNegativeCandidates() {
@@ -88,5 +98,6 @@ class CombinationSumTest {
     void testCandidatesNearZero(){
         assertEquals(List.of(List.of(1, 1, 1), List.of(1, 2)), CombinationSum.combinationSum(new int[]{-2, -1, 0, 1, 2}, 3));
     }
+
 
 }

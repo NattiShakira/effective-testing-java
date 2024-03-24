@@ -16,8 +16,14 @@ public class CombinationSum {
     private static void getResult(List<List<Integer>> result, List<Integer> cur, int[] candidates, int target, int start) {
         if (target > 0) {
             for (int i = start; i < candidates.length && target >= candidates[i]; i++) {
-                //bugfix
+                //bugfixes
+                if(result.size() >= 149){
+                    break;
+                }
                 if(candidates[i] <= 0){
+                    continue;
+                }
+                if(i > 0 && candidates[i] == candidates[i-1]){
                     continue;
                 }
                 cur.add(candidates[i]);
