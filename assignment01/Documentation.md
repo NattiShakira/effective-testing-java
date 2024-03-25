@@ -1,3 +1,137 @@
+# atoi
+By Elena Battiston
+## Specification-based testing
+### 1. Understanding the requirements, inputs, outputs
+#### Business Rules
+The core functionality of the programs is to transform a string rapresentation of a number into a 32-bit signed integer.
+#### Inputs
+The input received is a String. It can be of any type.
+
+#### Outputs
+The output of the programs is an integer value, it comprises the sign value when present.
+
+### 2. Explore what the program does for various inputs
+Different inputs were used in order to understand fully the functionalities of the methods.
+
+### 3. Explore possible inputs and outputs and identify partitions
+Based on the definition of a palindrome and the constraints given:
+
+- Input: string
+    - Null string
+    - Empty string
+    - String of length 1
+    - String of length > 1
+    - String starting with -
+    - String starting with +
+    - String contains integer
+    - String contains integers + character
+    - String starts with characters
+    - String with whitespace
+
+### 4. Analyze the boundaries
+Boundary analysis must consider:
+
+- _Null_
+- _Empty_
+- _Starts with - or +_:
+    - return negative or positive integer
+- _Starts with character + value_:
+    - return 0
+- _Start with number + character_:
+    - return only number
+- _Lower boundary exceed -2^31_:
+    - clamped to -2^31
+- _Higher boundary exceed > 2^31-1_:
+    - clamped to 2^31-1
+- _Starts with whitespace_:
+    - ignore whitespace
+
+### 5. Devise Test Cases
+Focus on creating test cases that cover the various scenarios identified in the previous steps.
+- **T1**: `null` input
+    - **Input**: `null`
+    - **Expected Output**: `0`
+
+- **T2**: Empty string
+    - **Input**: `""` (an empty string)
+    - **Expected Output**: `0`
+
+- **T3**: Starting whitespace
+    - **Input**: `"    42"`
+    - **Expected Output**: `42`
+
+- **T4**: Starting plus sign
+    - **Input**: `"+42"`
+    - **Expected Output**: `42`
+
+- **T5**: Starting minus sign
+    - **Input**: `"-42"`
+    - **Expected Output**: `-42`
+
+- **T6**: Non-digit characters after number
+    - **Input**: `"4193 with words"`
+    - **Expected Output**: `4193`
+
+- **T7**: Number exceeds positive boundary
+    - **Input**: `"999999999999"`
+    - **Expected Output**: `2147483647` (Integer.MAX_VALUE)
+
+- **T8**: Number exceeds negative boundary
+    - **Input**: `"-999999999999"`
+    - **Expected Output**: `-2147483648` (Integer.MIN_VALUE)
+
+- **T9**: Only non-digit characters
+    - **Input**: `"words and 987"`
+    - **Expected Output**: `0`
+
+- **T10**: Digits with leading zeros
+    - **Input**: `"0000000000012345678"`
+    - **Expected Output**: `12345678`
+    -
+- **T11**: Positive number just inside boundary
+    - **Input**: `"2147483647"` (Integer.MAX_VALUE as a string)
+    - **Expected Output**: `2147483647`
+
+- **T12**: Negative number just inside boundary
+    - **Input**: `"-2147483648"` (Integer.MIN_VALUE as a string)
+    - **Expected Output**: `-2147483648`
+
+- **T13**: Number with leading spaces
+    - **Input**: `" 12"`
+    - **Expected Output**: `12`
+
+
+### 6. Automate the test cases
+Consulting the devise of test case, a test for each studied behavior is implemented.
+### 7. Augument the Test Suite with Creativity and Experience
+The specification states that only the space character `' '` is considered a whitespace character for the purpose of leading whitespace. Since a tab character is not treated as whitespace by the specification, it should lead to the parsing being halted before the digits, resulting in `0`:
+- **T14**: Start with a tab character
+    - **Input**: `"\t99"`
+    - **Expected Output**: `0`
+
+**DEBUGGING**
+T14 test failed, showing a bug in the system. The code of myAtoi has changed to solve this issue. T14 is run once more and does not fail.
+## Structural Testing
+Enhancements to the previous test suite were made by utilizing structural testing with the aim of maximizing condition and branch coverage. The JaCoCo plugin was employed to measure coverage, yielding the following results:
+- Method Coverage: For the `isPalindrome(int)` method, both line and branch coverage reached 100%.
+- For the whole program line coverage was not 100% because one line was missing: class MyAtoi, which will therefore not be taken into consideration.
+  In order to assure that branch+condition coverage is reached, the tests approved that each of the individual conditions are being evaluated to true and false at least once and the entire branch is being true and false at least once.
+## Mutation testing
+Mutation testing was performed using PITest to evaluate the robustness of the test suite for the atoi method.
+
+## Mutation Coverage Results
+
+The MyAtoi class achieved a mutation coverage of 96%, with one conditional boundary mutant surviving. The mutant involved a changed conditional boundary.
+The input "2147483646" is chosen to kill it because it's one unit less than Integer.MAX_VALUE (2147483647), it's near overflowing with the addition of any digit greater than 1 (assuming the next operation would multiply it by 10 and potentially add up to 9, based on your method's logic).
+```java
+    @Test
+void atPositiveOverflowBoundary() {
+  assertEquals(MyAtoi.myAtoi("2147483646"), 2147483646);
+}
+```
+The following test successfully kills the last mutant reaching 100% mutation coverage.
+
+
 # combination_sum
 By Markus Niemack
 ## 1. Specification testing
@@ -180,6 +314,138 @@ numerator or denominator are 0.
 
 All other mutants are killed.
 
+# Generate_parentheses
+By Markus Senn
+
+## Specification Testing
+### 1. Understanding the requirements
+#### Business rules
+By giving a number, we generate all possible combinations of well-formed parenthesis with the length * 2 of said number.\
+Well-formed means that for every opening bracket, there is a closing bracket further down the line.\
+We do not accept negative numbers or 0, as well as numbers greater than 8.
+
+#### Input
+Non-negative number between 1 and 8 (inclusive).
+
+#### Output
+An array with all permutations (or an empty one for invalid inputs).
+
+### 2. Exploring the program
+Tested some basic inputs.
+
+### 3. Identifying partitions
+Given the task description the partitions are as follows:
+- Input
+  - positive integers in range
+  - positive integers out of range (empty array)
+  - negative integers (empty array)
+  - 0 (empty array)
+  - (invalid types are not in the description and do not need to be covered since the parameter restricts the type to int)
+
+### 4. Analyzing boundaries
+The boundary testing should include:
+- Going from positive to 0
+  - On point: 1
+  - Off point: 0
+- Leaving the allowed range
+  - On point: 8
+  - Off point: 9
+
+### 5. Devising test cases
+Let's combine partitions with some sense.
+- T1: Empty array from `0`
+- T2: Empty array from `-1`
+- T3: Lower boundary `1`
+- T4: Upper boundary `8`
+- T5: Invalid number out of boundary `9`
+
+The 8 allowed integers can be tested against their corresponding solution arrays.
+- T6: Integers `2-7` (1 & 8 being already covered before)
+
+### 6. Automating test cases
+Leveraging JUnit 5 we create the following test cases.
+
+```java
+class GenerateParenthesesTest {
+    @Test
+    void test1Zero() {
+        List<String> expected = List.of();
+        List<String> actual = GenerateParentheses.generateParentheses(0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void test2Negative() {
+        List<String> expected = List.of();
+        List<String> actual = GenerateParentheses.generateParentheses(-1);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void test3LowerBoundary() {
+        List<String> expected = List.of("()");
+        List<String> actual = GenerateParentheses.generateParentheses(1);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void test4UpperBoundary() {
+        List<String> expected = List.of("(((((((())))))))", "((((((()()))))))", "...");
+        List<String> actual = GenerateParentheses.generateParentheses(8);
+        assertIterableEquals(expected, actual);
+    }
+
+    @Test
+    void test5OutOfBoundary() {
+        List<String> expected = List.of();
+        List<String> actual = GenerateParentheses.generateParentheses(9);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void test6ValidIntegers() {
+        List<List<String>> solveArray = List.of(
+            List.of("(())", "()()"),
+            List.of("((()))", "(()())", "(())()", "()(())", "()()()"),
+            List.of("(((())))", "((()()))", "((())())", "((()))()", "(()(()))", "(()()())", "(()())()", "(())(())", "..."),
+            List.of("((((()))))", "(((()())))", "(((())()))", "(((()))())", "(((())))()", "((()(())))", "((()()()))", "..."),
+            List.of("(((((())))))", "((((()()))))", "((((())())))", "((((()))()))", "((((())))())", "((((()))))()", "..."), 
+            List.of("((((((()))))))", "(((((()())))))", "(((((())()))))", "(((((()))())))", "(((((())))()))", "...")
+        ;
+        for (int i = 2; i <= 7; i++) {
+            assertIterableEquals((solveArray.get(i - 2)), GenerateParentheses.generateParentheses(i));
+        }
+    }
+}
+```
+
+
+### 7. Augmenting with creativity and experience
+The following changes to the code have happened during the development of the test cases.
+1. There was no upper boundary check in place, which was revealed by T5
+
+Leading to this code change:
+```java
+if (n<=0) return combinations;
+```
+to
+```java
+if (n<=0 || n>8) return combinations;
+```
+
+## Structural Testing
+Using the JaCoCo plugin to measure condition+branch coverage has lead
+to the following discoveries:\
+I have 100% condition+branch coverage, not counting the class declaration line,
+thus I will not add any new tests at this stage.
+
+## Mutation Testing
+The first iteration of the mutation testing revealed only 1 surviving mutant which
+was related to a changed return value (95% mutation coverage).\
+I added a dedicated test for the class initialization (T7) and ran it a 2nd time.
+The mutant persisted on the 2nd run too, but I achieved 100% line coverage now and the mutant
+is in the same category as before (EmptyObjectReturnValsMutator), where I cannot gain anything from it.\
+Because of this I concluded the test suite development.
 
 # median_of_arrays
 By Natalia Carrion Gimenez
@@ -316,5 +582,322 @@ works correctly. The only aspect affected by this change, is the internal mechan
 when the values to which these pointers point are equal. If we use <, then p2 moves first; if we use <=, then p1 moves first. For this reason, it was decided to let this mutant live.
 
 
+# Needle_in_hay
+By Markus Senn
+
+## Specification Testing
+### 1. Understanding the requirements
+#### Business rules
+Given 2 strings, one being called the needle, we search for the first occurrence of the needle in the other string.\
+There are rules for empty words in both cases.
+
+#### Input
+2 strings that could be empty or null.
+
+#### Output
+The index of the **first** occurrence or a predefined integer.
+- -1 for no match, or at least 1 parameter being null
+- 0 when both parameters are empty
+
+### 2. Exploring the program
+Tested some different strings and types.
+
+### 3. Identifying partitions
+Given the task description the partitions are as follows:
+- Input
+  - strings with length > 0
+  - empty strings
+  - null
+  - (other invalid types are not in the description and do not need to be covered since the parameter restricts the types to string)
+
+### 4. Analyzing boundaries
+The boundary testing should include:
+- Normal to empty strings
+  - On point: length 1
+  - Off point: length 0
+- Multiple occurrences of needle
+  - On point: once
+  - Off point: twice
+- Case-sensitive strings
+  - On point: with alternating cases
+  - Off point: all lowercase
+- Strings with whitespaces or special characters will be caught since we compare characters.
+  If anything this is a sub-category of the case-sensitive boundary.
+- Needle being bigger than the haystack, but this will terminate normally with -1
+
+### 5. Devising test cases
+Let's design test cases according to the facts at hand.
+- T1: `null` for one & both
+- T2: both are `empty`
+- T3: 1 is `empty`
+- T4: both size `1`
+- T5: needle appears twice
+- T6: case switching
+
+### 6. Automating test cases
+Leveraging JUnit 5 we create the following test cases.
+```java
+class NeedleInHayTest {
+    @Test
+    void test1Null(){
+        assertEquals(-1, NeedleInHay.find("hehe", null));
+        assertEquals(-1, NeedleInHay.find(null, "hihi"));
+        assertEquals(-1, NeedleInHay.find(null, null));
+    }
+
+    @Test
+    void test2BothEmpty(){
+        assertEquals(0, NeedleInHay.find("",""));
+    }
+
+    @Test
+    void test3OneEmpty(){
+        assertEquals(-1, NeedleInHay.find("", "Donde"));
+        assertEquals(-1, NeedleInHay.find("Dante", ""));
+    }
+
+    @Test
+    void test4Size1(){
+        assertEquals(-1, NeedleInHay.find("f", "s"));
+        assertEquals(0, NeedleInHay.find("f", "f"));
+    }
+
+    @Test
+    void test5NeedleTwice(){
+        assertEquals(5, NeedleInHay.find("stackhaydayafterhayday", "hay"));
+    }
+
+    @Test
+    void test6CaseSensitivity(){
+        assertEquals(3, NeedleInHay.find("duRdAmA","dA"));
+    }
+}
+```
 
 
+### 7. Augmenting with creativity and experience
+The following changes to the code have happened during the development of the test cases.
+1. T3 initially returned as faulty with a StringIndexOutOfBoundsException.
+   Upon further inspection of the code I found this passage that needed work:
+```java
+if (haystack.isEmpty() && needle.isEmpty()) return 0;
+```
+in combination with
+```java
+for(int i = 0; i < (lenHay-lenNed + 1); i++) {
+  if(haystack.charAt(i) == needle.charAt(0)) {
+```
+
+I tackled it at the beginning with an additional check for one empty parameter.
+```java
+if (haystack.isEmpty() || needle.isEmpty()) return -1;
+```
+
+
+## Structural Testing
+Using the JaCoCo plugin to measure condition+branch coverage has lead
+to the following discovery:\
+I have 100% condition+branch coverage, not counting the class declaration line, for which I added another test T7.
+```java
+@Test
+void test7Constructor() {
+  NeedleInHay testInstance = new NeedleInHay();
+  assertInstanceOf(NeedleInHay.class, testInstance);
+}
+```
+
+## Mutation Testing
+The mutation testing showed no surviving mutants (100% mutation coverage).\
+I finish the test suite development at this point .
+
+
+# Palindrome
+By Elena Battiston
+
+## Specification-based testing
+### 1. Understanding the requirements, inputs, outputs
+#### Business Rules
+The core functionality of the programs is to determine if an integer x is a palindrome. This involves checking whether x reads the same backward as forward. A palindrome remains unchanged when reversed. Moreover, negative numbers are not considered palindromes due to the negative sign affecting symmetry.
+
+#### Inputs
+Both programs receive a single input: an integer x. The value of x can range from -2^20 to 2^20 - 1, encompassing both negative and positive integers, including zero.
+
+#### Outputs
+The output of the programs is a boolean value, true if x is a palindrome and false if x is not a palindrome.
+
+### 2. Explore what the program does for various inputs
+Different inputs were used in order to understand fully the functionalities of the methods.
+
+### 3. Explore possible inputs and outputs and identify partitions
+Based on the definition of a palindrome and the constraints given:
+
+- Input: integer value
+  - Negative integers (should return false).
+  - Zero (should return true).
+  - Null (invalid or exception)
+  - Positive integers that are single digits (should return true).
+  - Positive integers that are palindromes with both even and odd numbers of digits (should return true).
+  - Positive integers that are not palindromes, both even and odd numbers of digits (should return false).
+
+### 4. Analyze the boundaries
+Boundary analysis must consider:
+
+- Negative to Non-Negative Transition:
+  - Test Cases:
+    - On Point: 0.
+    - Off Point: -1.
+
+- Single Digit to Double Digit Transition:
+  - Test Cases:
+    - On Point: 11.
+    - Off Points: 10, and 9.
+
+- Integer Limits:
+  - Test Cases:
+    - On Points: Specific palindromes near the upper limit (2^20 - 1) to ensure the algorithm handles large numbers correctly without overflow or logic errors.
+    - Off Points: Numbers just outside the palindrome definition at high values, ensuring the transition from palindrome to non-palindrome is handled correctly.
+
+### 5. Devise Test Cases
+Focus on creating test cases that cover the various scenarios identified in the previous steps, including edge cases, boundary conditions, and typical palindrome and non-palindrome numbers.
+
+#### Exceptional Cases and Boundary Testing
+- **T1**: `null` input
+- **T2**: Lower boundary just beyond constraint (`-2^20 - 1`)
+- **T3**: Lower boundary (`-2^20`)
+- **T4**: `-1` (Largest negative number within constraint)
+- **T5**: `0` (Smallest non-negative number within constraint)
+- **T6**: `1` (Smallest positive number within constraint)
+- **T7**: Upper boundary (`2^20 - 1`)
+- **T8**: Upper boundary just beyond constraint (`2^20`)
+
+#### Transition Between Non-Palindromic and Palindromic States
+- **T9**: Number just before the smallest two-digit palindrome (`10`)
+- **T10**: Smallest two-digit palindrome (`11`)
+- **T11**: Number just after a two-digit palindrome (`12`)
+
+### 6. Automate the test cases
+
+JUnit 5 will be used to automate the test cases. Tests should validate both methods, highlighting differences in behavior, if any.
+
+```java
+@Test
+void testNullInput() {
+    // As Java primitive types cannot be null, this test case is not applicable.
+}
+
+@Test
+void testLowerBoundaryConstraint() {
+    assertFalse(PalindromeTwo.isPalindrome(-(int)Math.pow(2, 20) - 1));
+}
+
+@Test
+void testLowerBoundary() {
+    assertFalse(PalindromeTwo.isPalindrome(-(int)Math.pow(2, 20)));
+}
+
+@Test
+void testNegativeOne() {
+    assertFalse(PalindromeTwo.isPalindrome(-1));
+}
+
+@Test
+void testZero() {
+    assertTrue(PalindromeTwo.isPalindrome(0));
+}
+
+@Test
+void testOne() {
+    assertTrue(PalindromeTwo.isPalindrome(1));
+}
+
+@Test
+void testUpperBoundary() {
+    assertFalse(PalindromeTwo.isPalindrome((int)Math.pow(2, 20) - 1));
+}
+
+@Test
+void testUpperBoundaryConstraint() {
+    assertFalse(PalindromeTwo.isPalindrome((int)Math.pow(2, 20)));
+}
+
+@Test
+void testJustBeforeTwoDigitPalindrome() {
+    assertFalse(PalindromeTwo.isPalindrome(10));
+}
+
+@Test
+void testSmallestTwoDigitPalindrome() {
+    assertTrue(PalindromeTwo.isPalindrome(11));
+}
+
+@Test
+void testJustAfterTwoDigitPalindrome() {
+    assertFalse(PalindromeTwo.isPalindrome(12));
+}
+```
+The same are applied to PalindromeOne
+**DEBUGGING**
+Testing the PalindromeOne and PalindromeTwo we get that the testZero for PalindromeTwo given the wrong result, meaning that inserting one 0 the code return the boolean false wrongly.
+In the code, the condition if (x % 10 == 0) return false; is causing 0 to be incorrectly evaluated as not a palindrome. To fix the method, a specific check for zero before this condition is added:     if (x == 0) return true;
+The tests are run once more to check if the bug is correctly solved, and it is.
+
+### 7. Augument the Test Suite with Creativity and Experience
+This analysis evolved in the following considerations:
+
+In the test the upperBoundary has been checked (2^20 - 1 = false) and also the upperBoundaryConstraint(2^20 = false) but in-points and out-points have not been checked (like 1,048,401 and 1,049,401)
+The augmented test are:
+```java
+@Test
+    void testClosestSmallerPalindromeToUpperBoundary() {
+        assertTrue(PalindromeOne.isPalindrome(1_048_401));
+    }
+
+    @Test
+    void testClosestLargerPalindromeToUpperBoundary() {
+        assertFalse(PalindromeOne.isPalindrome(1_049_401));
+    }
+```
+**DEBUGGING**
+The tests indeed asses 1_049_401 as Palindrome, but the number id out of the constraint. This occurs because the constraints in the requirements are not covered in the code. So this case is resolved with this improvements in both the classes:
+if (x < -(1 << 20) || x > ((1 << 20) - 1)) return false;
+The tests are run once more to check if the cases are correctly solved, and they are.
+
+## Structural Testing
+Enhancements to the previous test suite were made by utilizing structural testing with the aim of maximizing condition and branch coverage. The JaCoCo plugin was employed to measure coverage, yielding the following results:
+
+### PalindromeOne:
+- Branch Coverage: No branches were missed; all 8 branches present were covered by tests.
+- Line Coverage: One line in the source code was not executed; this line was the class declaration (`public class PalindromeOne`) and was therefore not considered relevant.
+- Method Coverage: For the `isPalindrome(int)` method, both instruction and branch coverage reached 100%.
+
+### PalindromeTwo:
+- Branch Coverage: Partial. Line 19 had one of four branches missed, and line 27 had one of two branches missed. Also here 1 line in the source code was not executed; this line was the class declaration (`public class PalindromeTwo`) and was therefore not considered relevant.
+- Instruction Coverage for the `isPalindrome(int)` method: Achieved 94%.
+- Branch Coverage for the `isPalindrome(int)` method: Reached 91%.
+
+Line 19: The conditional check if (x < 1000 && ((x / 100) * 10 + x % 10) % 11 == 0) was never true for both x < 1000 and ((x / 100) * 10 + x % 10) % 11 == 0 in test cases.
+A test has been developed and tested to solve it:assertFalse(PalindromeTwo.isPalindrome(231));
+
+Line 27: One of the two branches of if (v > x) is missing. There was missing the case of a palindrome with even length.
+A test has been developed and tested to solve it: assertTrue(PalindromeTwo.isPalindrome(2222));
+
+With these new two tests, for the `isPalindrome(int)` method, branch coverage reached 100%.
+
+In order to assure that branch+condition coverage is reached, the test approved that each of the individual conditions are being evaluated to true and false at least once and the entire branch is being true and false at least once.
+## Mutation testing
+Mutation testing was performed using PITest to evaluate the robustness of the test suite for the palindrome checking methods in `PalindromeOne` and `PalindromeTwo`.
+
+## Mutation Coverage Results
+
+- `PalindromeOne` achieved a mutation coverage of 77%, with two conditional boundary mutants surviving.
+- `PalindromeTwo` achieved a mutation coverage of 73%, with several conditional boundary and logic negation mutants surviving.
+
+### Analysis of Surviving Mutants
+
+### PalindromeOne
+- The surviving mutants were related to conditional boundary logic. Tests covered boundary conditions, they are mutations that don't change the program's behavior.
+
+### PalindromeTwo
+- **Changed Conditional Boundary**:
+- **Replaced Integer Modulus with Multiplication**:
+- **Replaced Integer Addition with Subtraction (and vice versa)**:
