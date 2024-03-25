@@ -181,5 +181,140 @@ numerator or denominator are 0.
 All other mutants are killed.
 
 
+# median_of_arrays
+By Natalia Carrion Gimenez
+## 1. Specification-based testing
+
+First, I read the requirements to understand the goal of the program and its inputs and outputs:
+1. The goal of the program is to find a median of the two sorted in ascending order arrays.
+2. The program receives two parameters: a sorted in ascending order array of integers of length m and a sorted in ascending order array of integers of length n.
+3. The program returns a double representing the median of the two sorted arrays.
+
+Second, I explored what the program does for various inputs and wrote several tests for happy cases:
+1. Given arrays [1, 2, 3] and [4, 5, 6], the program should return 3.5.
+2. Given arrays [1, 2, 3] and [1, 2, 3], the program should return 2.
+3. Given arrays [] and [2, 3, 5], the program should return 3.
+
+These tests passed!
+
+Next, I explored possible inputs and outputs and identified partitions and boundaries.
+1. First input is an array of integers of length m, thus we need to check the following cases:
+- array is null;
+- array is empty;
+- array's length = 1;
+- array's length > 1. In this case, there should be checked several options: 
+- an array is sorted in ascending order;
+- an array is sorted in descending order;
+- an array is sorted but has duplicate values;
+- an array is not sorted.
+
+Second input is an array of integers of length n. Partitions for this input is similar to the case above.
+
+2. Speaking about input combinations, the two arrays have a relationship:
+- the sum of the lengths of the arrays can be odd or even. In case it is odd, the program should return a certain 
+value that belongs to one of the arrays. In case it is even, the program should return an average of two values that 
+can belong to the same array or to different arrays. 
+- the lengths of the arrays can be the same, or one of the arrays can be larger than the other. The program should handle these cases.
+- values of the arrays should be also considered: there can be cases when the last value of one array is smaller that the first value of another array, in this case a "merger" is not required; in the opposite case, a "merger" can be necessary.
+
+3. Since the program outputs a single double, there are not so many options to check but the program should check when the output is 0 (either array is null or empty) or -1 (both arrays are empty).
+
+Taking the above discussion into account, the following test cases were devised:
+1. Exceptional cases
+- T1: the first array is null
+- T2: the second array is null
+- T3: the first array is empty
+- T4: the second array is empty
+- T5: both arrays are empty
+- T6: the first array is sorted in descending order
+- T7: the second array is sorted in descending order
+- T8: the first array is not sorted
+- T9: the second array is not sorted
+
+2. Cases that don't require to "merge" arrays (the last value of the first arrays if smaller than the first value of the second array):
+
+2.1. The sum of lengths of arrays is odd:
+- T10: first array goes first, and it's length is exactly 1 bigger than the length of the second array
+- T11: first array goes first, but the length of the second array is 1 bigger than the length of the first array
+- T12: first array goes first, and it's length is more than 1 element bigger than the length of the second array
+- T13: first array goes first, but the length of the second array is more than 1 element bigger than the length of the first array
+- T14-T17: similar to T10-13, but now the second array goes first.
+
+2.2. The sum of lengths of arrays is even:
+- T18: first array goes first, lengths of both arrays are equal
+- T19: first array goes first, and it's length is 2 elements bigger that the length of the second array
+- T20-T21: similar to T18-19, but now the second array goes first
+
+3. Cases that require to "merge" arrays (their values are mixed):
+
+3.1. The sum of lengths of arrays is odd:
+- T22: the length of the first array is bigger
+- T23: the length of the second array is bigger
+
+3.2. The sum of the lengths of arrays is even:
+- T24: length of each array is the same (and odd), the program returns an average of values belonging to the same array
+- T25: length of each array is the same (and odd), the program returns an average of values belonging to different arrays
+- T26: length of the first array is bigger, the program returns an average of values belonging to the same array
+- T27: length of the first array is bigger, the program returns an average of values belonging to different arrays
+- T28-29: similar to T26-27, but now the second array's length is bigger
+
+4. An array has duplicate values:
+- T30: first array has duplicate values
+- T31: second array has duplicate values
+
+After all the tests were implemented, 29 of them passed, but 2 broke. T30 and T31 didn't pass, because the program didn't consider an 
+array containing duplicate values being properly sorted. To solve this problem, the following fix was made to a method isArraySortedAscending:
+
+a conditional boundary 
+```java
+if (array[i] >= array[i + 1]) {
+    return false;
+}
+```
+was changed to
+```java
+if (array[i] > array[i + 1]) {
+    return false;
+}
+```
+
+## 2. Structural testing
+
+Jacoco coverage report showed that the implemented test suite has a 100% line, condition and branch coverage.
+
+## 3. Mutation testing
+
+Pitest ran 130 tests with 46 generated mutations out of which 44 were killed (96%).
+Inspection of the survived mutants revealed the following:
+1. The first mutant replaced integer addition with subtraction in the conditional statement of the method findMedianSortedArrays:
+
+The condition
+```java
+if ((m + n) % 2 == 0) {...}
+```
+was changed to
+```java
+if ((m - n) % 2 == 0) {...}
+```
+
+Since both versions of the conditional statements evaluate to truth or false given the same values of m and n, 
+this mutant does not affect the program. Thus, it was decided to leave it as is, instead of writing a specific test that would check that the program performs addition and not subtraction in the conditional statement.
+
+2. The second mutant changed a conditional boundary in the method getMin:
+
+Supposedly, the conditional boundary 
+```java
+return nums1[p1] < nums2[p2] ? nums1[p1++] : nums2[p2++];
+```
+was changed to
+```java
+return nums1[p1] <= nums2[p2] ? nums1[p1++] : nums2[p2++];
+```
+
+Thorough analysis of the program showed that it doesn't matter what conditional boundary is used. In both cases, the program 
+works correctly. The only aspect affected by this change, is the internal mechanics of the method getMin. More precisely, it affects what pointer (p1 or p2) moves first 
+when the values to which these pointers point are equal. If we use <, then p2 moves first; if we use <=, then p1 moves first. For this reason, it was decided to let this mutant live.
+
+
 
 
