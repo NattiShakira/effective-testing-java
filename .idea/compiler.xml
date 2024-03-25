@@ -6,11 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="frac-2-dec" />
         <module name="palindrome" />
-        <module name="combination-sum" />
         <module name="atoi-test" />
-        <module name="maximum-subarray" />
       </profile>
     </annotationProcessing>
   </component>
