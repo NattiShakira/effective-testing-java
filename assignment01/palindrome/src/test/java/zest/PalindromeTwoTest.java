@@ -81,4 +81,31 @@ class PalindromeTwoTest {
     void testThreeDigitNumberNotPalindrome() {
         assertFalse(PalindromeTwo.isPalindrome(231)); //
     }
+    // added after mutation testing
+    @Test
+    void additionCriticalForConstructingPalindrome() {
+        assertTrue(PalindromeTwo.isPalindrome(1221));
+        assertFalse(PalindromeTwo.isPalindrome(1231));
+    }
+    // added after mutation testing
+    @Test
+    void testThreeDigitPalindromeLogic() {
+        // Direct three-digit palindrome
+        assertTrue(PalindromeTwo.isPalindrome(121));
+
+        // Non-palindrome with last digit zero
+        assertFalse(PalindromeTwo.isPalindrome(120));
+
+        // Three-digit non-palindrome edge case
+        assertFalse(PalindromeTwo.isPalindrome(123));
+
+        // Validating correct handling of modulus and division
+        assertTrue(PalindromeTwo.isPalindrome(101));
+
+        // Three-digit palindrome at the upper limit
+        assertTrue(PalindromeTwo.isPalindrome(999));
+
+        // Close to upper limit non-palindrome
+        assertFalse(PalindromeTwo.isPalindrome(998));
+    }
 }
