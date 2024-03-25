@@ -1,17 +1,16 @@
 package zest;
+import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 class MyAtoiTest {
 
     @Test
     void nullTest(){
         assertEquals(MyAtoi.myAtoi(null),0);
-
     }
-
     @Test
     void emptyTest(){
         assertEquals(MyAtoi.myAtoi(""),0);
-
     }
     @Test
     void startingWhitespace(){
@@ -68,5 +67,10 @@ class MyAtoiTest {
     @Test
     void startWithTab(){
         assertEquals(MyAtoi.myAtoi("\t99"),0);
+    }
+    // added after mutation testing
+    @Test
+    void atPositiveOverflowBoundary() {
+        assertEquals(MyAtoi.myAtoi("2147483646"), 2147483646);
     }
 }
