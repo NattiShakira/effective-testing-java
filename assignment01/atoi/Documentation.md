@@ -3,7 +3,7 @@
 #### Business Rules
 The core functionality of the programs is to transform a string rapresentation of a number into a 32-bit signed integer. 
 #### Inputs
-The input received is a String. It can be of any type, like null, empty.
+The input received is a String. It can be of any type.
 
 #### Outputs
 The output of the programs is an integer value, it comprises the sign value when present.
@@ -119,4 +119,12 @@ Mutation testing was performed using PITest to evaluate the robustness of the te
 
 ## Mutation Coverage Results
 
-The MyAtoi class achieved a mutation coverage of 96%, with one conditional boundary mutant surviving.
+The MyAtoi class achieved a mutation coverage of 96%, with one conditional boundary mutant surviving. The mutant involved a changed conditional boundary.
+The input "2147483646" is chosen to kill it because it's one unit less than Integer.MAX_VALUE (2147483647), it's near overflowing with the addition of any digit greater than 1 (assuming the next operation would multiply it by 10 and potentially add up to 9, based on your method's logic).
+```java
+    @Test
+void atPositiveOverflowBoundary() {
+  assertEquals(MyAtoi.myAtoi("2147483646"), 2147483646);
+}
+```
+The following test successfully kills the last mutant reaching 100% mutation coverage.
