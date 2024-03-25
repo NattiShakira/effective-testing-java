@@ -6,13 +6,13 @@ class MyAtoi {
             return 0;
         }
 
-        // ADDED:Initial pass to skip leading spaces
+        // ADDED:Initial pass to skip only whitespaces
         int i = 0;
         while (i < s.length() && s.charAt(i) == ' ') {
             i++;
         }
 
-        // At this point, 'i' is at the first non-space character or past the end of the string
+        // 'i' is at the first non-space character or past the end of the string
         if (i == s.length()) {
             return 0;
         }
