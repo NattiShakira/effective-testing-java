@@ -142,7 +142,7 @@ The augmented test are:
     }
 ```
 **DEBUGGING**
-The tests indeed asses 1_049_401 as Palindrome, but the number id out of the constraint. This occurs because the constraints in the requirements are not covered in the code. So this case is resolved with this improvements in both the classes:
+The tests indeed asses 1_049_401 as Palindrome, but the number is out of the constraint. This occurs because the constraints in the requirements are not covered in the code. So this case is resolved with these improvements in both the classes:
 if (x < -(1 << 20) || x > ((1 << 20) - 1)) return false;
 The tests are run once more to check if the cases are correctly solved, and they are.
 
@@ -152,7 +152,7 @@ Enhancements to the previous test suite were made by utilizing structural testin
 ### PalindromeOne:
 - Branch Coverage: No branches were missed; all 8 branches present were covered by tests.
 - Line Coverage: One line in the source code was not executed; this line was the class declaration (`public class PalindromeOne`) and was therefore not considered relevant.
-- Method Coverage: For the `isPalindrome(int)` method, both instruction and branch coverage reached 100%.
+- Method Coverage: For the `isPalindrome(int)` method, branch coverage reached 100%.
 
 ### PalindromeTwo:
 - Branch Coverage: Partial. Line 19 had one of four branches missed, and line 27 had one of two branches missed. Also here 1 line in the source code was not executed; this line was the class declaration (`public class PalindromeTwo`) and was therefore not considered relevant.
@@ -173,15 +173,16 @@ Mutation testing was performed using PITest to evaluate the robustness of the te
 
 ## Mutation Coverage Results
 
-- `PalindromeOne` achieved a mutation coverage of 77%, with two conditional boundary mutants surviving.
+- `PalindromeOne` achieved a mutation coverage of 79%, with two conditional boundary mutants surviving.
 - `PalindromeTwo` achieved a mutation coverage of 73%, with several conditional boundary and logic negation mutants surviving.
 
 ### Analysis of Surviving Mutants
 
 ### PalindromeOne
-- The surviving mutants were related to conditional boundary logic. Tests covered boundary conditions, they are mutations that don't change the program's behavior.
+- **changed conditional boundary (Survived)**:It suggests that the test cases did not cover the scenario where x is outside the specified constraint range. It is nevertheless tested in testLowerBoundaryConstraint, testLowerBoundary, testUpperBoundary, testUpperBoundaryConstraint.
 
 ### PalindromeTwo
-- **Changed Conditional Boundary**:
-- **Replaced Integer Modulus with Multiplication**:
-- **Replaced Integer Addition with Subtraction (and vice versa)**:
+- **Replaced Integer Addition with Subtraction**:The additionCriticalForConstructingPalindrome test was designed to ensure that the logic for checking a palindrome, which inherently relies on correct addition for comparing the original number with its reverse, functions as intended. By asserting both true and false outcomes for specific inputs (1221 and 1231), this test directly challenges the integrity of addition operations within the palindrome checking method.By eliminating this mutation, the mutation coverage improved from 72% to 74%
+- **Replaced Integer Modulus with Multiplication**:The test method testThreeDigitPalindromeLogic directly contributed to the identification and resolution of this mutant.These scenarios were carefully chosen to include numbers that, through their structure and the arithmetic operations applied to them, would reveal any inaccuracies introduced by replacing division with multiplication.
+This advancement in testing led to an increase in mutation coverage from 74% to 77%.
+- **Replaced Double Subtraction with Addition (Survived)**: This mutation alters arithmetic operations, replacing subtraction with addition. Such a mutation might attempt to modify how indices or numerical values are calculated, potentially altering the flow or outcomes of logical conditions.
