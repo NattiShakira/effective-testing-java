@@ -447,8 +447,91 @@ The mutant persisted on the 2nd run too, but I achieved 100% line coverage now a
 is in the same category as before (EmptyObjectReturnValsMutator), where I cannot gain anything from it.\
 Because of this I concluded the test suite development.
 
+
+# maximum_subarray
+By Natalia Carrion Gimenez
+
+## 1. Specification-based testing
+
+First, I read the requirements to understand the goal of the program and its inputs and outputs:
+1. The goal of the program is to find a (contiguous) subarray in an array so that the sum of elements of the subarray is the largest.
+2. The program receives one parameter - an array of integers. The program should use this array to search for a subarray with the largest sum.
+3. The program returns an integer representing the sum of elements of a subarray with the largest sum.
+
+Second, I explored what the program does for various inputs and wrote several tests for happy cases:
+1. Given an array with only positive elements, the program should return their sum.
+2. Given an array with only negative elements, the program should return the biggest value.
+3. Given an array consisting of two parts the first of which contains only positive values and the second one only negative, the program should return the sum of the elements of the first part.
+4. Given an array with mixed values [2, -1, 3], the program should return 4. 
+
+These tests passed!
+
+Next, I explored possible inputs and outputs and identified partitions and boundaries.
+1. Our single inputs is an array of integers, thus we need to check the following cases:
+- array is null
+- array is empty
+- array's length = 1
+- array's length > 1.
+
+2. Input combinations are not relevant for us, since there is only one input.
+
+3. The program outputs a single integer, thus there are not so many options to check, but we should check when the output is 0 (an array is empty)
+ and, possibly, when the program throws an IllegalArgumentException (an array is null).
+
+4. Thinking about other partitions and boundaries, it makes sense to also check the following cases:
+- an array contains only positive values
+- an array contains only negative values
+- an array contains two distinct parts (positive/negative)
+- an array contains mixed values
+- an array contains two consecutive values with different signs and different or equal absolute values.
+
+Taking the above discussion into account, the following test cases were devised:
+1. Exceptional cases:
+- T1: the array is empty
+- T2: the array is null
+- T3: the array has length = 1
+2. The array has only positive or only negative values:
+- T4: the array has only positive unsorted values
+- T5: the array has only positive sorted in ascending order values
+- T6: the array has only positive sorted in descending order values
+- T7: the array has only negative unsorted values
+- T8: the array has only negative sorted in ascending order values
+- T9: the array has only negative sorted in descending order values
+3. The array has two distinct parts:
+- T10: the array has two distinct parts: positive values followed by negative ones
+- T11: the array has two distinct parts: negative values followed by positive ones
+4. The array has mixed values:
+- T12: the array has mixed values, it starts with a positive value
+- T13: the array has mixed values, it starts with a negative value
+- T14: the array contains two consecutive values with different signs and equal absolute values, the positive value goes first ([..., 6, -6, ...])
+- T15: the array contains two consecutive values with different signs and equal absolute values, the negative value goes first ([..., -6, 6, ...])
+- T16: the array contains two consecutive values with different signs and different absolute values, the positive value is bigger and goes first ([..., 6, -5, ...])
+- T17: the array contains two consecutive values with different signs and different absolute values, the positive value is smaller and goes first ([..., 5, -6, ...])
+- T18: the array contains two consecutive values with different signs and different absolute values, the negative value is bigger and goes first ([..., -6, 5, ...])
+- T19: the array contains two consecutive values with different signs and different absolute values, the negative value is smaller and goes first ([..., -5, 6, ...])
+
+After all the tests were implemented, 17 of them passed, but 2 broke. T1 and T2 didn't pass (the array is empty or null). To solve this problem, the following piece of code was added to the method maxSubArray:
+```java
+if (a == null) {
+    throw new IllegalArgumentException("Array cannot be null!");
+}
+if (a.length == 0) return 0;
+```
+
+## 2. Structural testing
+
+Jacoco coverage report showed that the implemented test suite has a 100% branch coverage, but ony 93% instruction coverage with 1 missed complexity (out of 5) and 1 missed line (out of 10).
+More detailed inspection of the coverage revealed that the only uncovered part is a line containing a class declaration. It can be explained by the fact that the method maxSubArray is static and when testing it, no instance of the class itself is created.
+For this reason, it was decided to accept the coverage report results as satisfying. 
+
+## 3. Mutation testing
+
+Pitest ran 6 tests with 6 generated mutations which were all killed. Thus, the test suite strength in this regard is 100%.
+
+
 # median_of_arrays
 By Natalia Carrion Gimenez
+
 ## 1. Specification-based testing
 
 First, I read the requirements to understand the goal of the program and its inputs and outputs:
