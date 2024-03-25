@@ -76,5 +76,4 @@ class PalindromeOneTest {
     void testClosestLargerPalindromeToUpperBoundary() {
         assertFalse(PalindromeOne.isPalindrome(1_049_401));
     }
-//new one
 }
