@@ -1,4 +1,4 @@
-# Problem: Find the Index of the First Occurence in a String
+# Problem: Find the Index of the First Occurrence in a String
 
 ## Description
 

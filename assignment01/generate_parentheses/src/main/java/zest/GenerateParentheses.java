@@ -7,7 +7,7 @@ public class GenerateParentheses {
 
     public static List<String> generateParentheses(int n) {
         List<String> combinations = new ArrayList();
-        if (n<=0) return combinations;
+        if (n<=0 || n>8) return combinations;
         generateAll(new char[2 * n], 0, combinations);
         return combinations;
     }
