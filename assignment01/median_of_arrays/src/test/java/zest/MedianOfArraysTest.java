@@ -83,10 +83,6 @@ class MedianOfArraysTest {
         assertEquals(0, medianOfArrays.findMedianSortedArrays(new int[]{1, 2, 3, 4, 5}, new int[]{5, 6, 3, 2, 1}));
     }
 
-    // No merger, sum of lengths is odd,
-    // nums1 goes first (and vice versa)
-    // nums1.length == nums2.length + 1 (and vice versa) vs.
-    // nums1.length > nums2.length + 1 (and vice versa)
     @Test
     public void testNoMergerOdd1() {
         //nums1 goes first, nums1's length is 1 bigger
