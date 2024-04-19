@@ -1,0 +1,41 @@
+timestamp = 2024-04-19T20:01:31.310760100, ClimbingStairsTest:climbStairsInvalidCaseProperty = 
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 884                  | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 9          | # of all combined edge cases
+edge-cases#tried = 9          | # of edge cases tried in current run
+seed = -2608107156321369979   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-19T20:01:31.356306300, ClimbingStairsTest:correctExecutionInRange = 
+                              |-----------------------jqwik-----------------------
+tries = 89                    | # of calls to property
+checks = 89                   | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -6198312887322226117   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-19T20:01:31.364291100, ClimbingStairsTest:correctExecutionBelowTwo = 
+                              |-----------------------jqwik-----------------------
+tries = 3                     | # of calls to property
+checks = 3                    | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = 6957222255973623409    | random seed to reproduce generated values
+
+
+
+Process finished with exit code 0
