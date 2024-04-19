@@ -38,10 +38,11 @@ output.
 Moreover, trying to assert for the upper-boundary (assertDoesNotThrow(() -> climber.climbStairs(Integer.MAX_VALUE));) it
 can be noticed that the program shows integer overflow.
 
-### Task 4: Property-Based Testing
+# Task 4: Property-Based Testing
 
 Using property-based testing with jqwik, it was identified an integer overflow threshold at an argument value of 92.
 This critical boundary condition has led to an additional precondition being implemented to prevent inputs greater than
+
 91.
 
 For this reason in the code a new precondition for (n > 91) is added.
