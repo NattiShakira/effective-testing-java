@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LongestIncreasingSubsequence.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">LongestIncreasingSubsequence</a> &gt; <a href="index.source.html" class="el_package">zest</a> &gt; <span class="el_source">LongestIncreasingSubsequence.java</span></div><h1>LongestIncreasingSubsequence.java</h1><pre class="source lang-java linenums">package zest;
+
+<span class="fc" id="L3">public class LongestIncreasingSubsequence {</span>
+    public int lengthOfLIS(int[] nums) {
+        // Pre-condition
+<span class="fc bfc" id="L6" title="All 4 branches covered.">        if (nums == null || nums.length == 0) {</span>
+<span class="fc" id="L7">            return 0;</span>
+        }
+
+<span class="fc" id="L10">        int[] dp = new int[nums.length];</span>
+<span class="fc" id="L11">        int maxLength = 0;</span>
+
+        // Invariant 1
+<span class="fc" id="L14">        invariant1SatisfiesConditions(dp, nums);</span>
+
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        for (int i = 0; i &lt; nums.length; i++) {</span>
+<span class="fc" id="L17">            dp[i] = 1; // Each element is an increasing subsequence of length 1</span>
+
+            // Check all previous elements to find longer increasing subsequences
+<span class="fc bfc" id="L20" title="All 2 branches covered.">            for (int j = 0; j &lt; i; j++) {</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">                if (nums[i] &gt; nums[j]) {</span>
+<span class="fc" id="L22">                    dp[i] = Math.max(dp[i], dp[j] + 1);</span>
+                    // Invariant 2
+<span class="fc" id="L24">                    invariant2SatisfiesConditions(dp[i]);</span>
+                }
+            }
+
+<span class="fc" id="L28">            maxLength = Math.max(maxLength, dp[i]);</span>
+        }
+
+        // Invariant 1
+<span class="fc" id="L32">        invariant1SatisfiesConditions(dp, nums);</span>
+
+        // Post-conditions
+<span class="fc" id="L35">        resultSatisfiesConditions(maxLength, nums);</span>
+
+<span class="fc" id="L37">        return maxLength;</span>
+    }
+
+    Boolean resultSatisfiesConditions(int result, int[] array) {
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (result &lt; 0) throw new RuntimeException(&quot;Result must be a non-negative integer&quot;);</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (result &gt; array.length) throw new RuntimeException(&quot;Result cannot be bigger that the length of the input array&quot;);</span>
+<span class="fc" id="L43">        return true;</span>
+    }
+
+    Boolean invariant1SatisfiesConditions(int[] dp, int[] nums) {
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (dp.length != nums.length) throw new RuntimeException(&quot;DP array has to have the same length as the input array&quot;);</span>
+<span class="fc" id="L48">        return true;</span>
+    }
+
+    Boolean invariant2SatisfiesConditions(int num) {
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if (num &lt; 1) throw new RuntimeException(&quot;Elements of DP array cannot be smaller than 1&quot;);</span>
+<span class="fc" id="L53">        return true;</span>
+    }
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

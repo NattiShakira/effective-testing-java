@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UniquePaths.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">UniquePathsGrid</a> &gt; <a href="index.source.html" class="el_package">zest</a> &gt; <span class="el_source">UniquePaths.java</span></div><h1>UniquePaths.java</h1><pre class="source lang-java linenums">package zest;
+
+<span class="fc" id="L3">public class UniquePaths{</span>
+    public int uniquePaths(int m, int n) {
+        // Pre-conditions
+<span class="fc bfc" id="L6" title="All 8 branches covered.">        if ((m &lt; 1 || m &gt; 100)  || (n &lt; 1 || n &gt; 100)) throw new IllegalArgumentException(&quot;Passed argument is outside the range of 1 and 100&quot;);</span>
+
+<span class="fc" id="L8">        int[][] dp = new int[m][n];</span>
+
+        // Initialize the first row and column to 1 since there's only one way to reach any cell in the first row or column
+        // Filling in the first column of the table with 1s
+<span class="fc bfc" id="L12" title="All 2 branches covered.">        for (int i = 0; i &lt; m; i++) {</span>
+<span class="fc" id="L13">            dp[i][0] = 1;</span>
+        }
+        // Filling in the first row of the table with 1s
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        for (int j = 0; j &lt; n; j++) {</span>
+<span class="fc" id="L17">            dp[0][j] = 1;</span>
+        }
+
+        // Fill the DP table
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        for (int i = 1; i &lt; m; i++) {</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">            for (int j = 1; j &lt; n; j++) {</span>
+<span class="fc" id="L23">                dp[i][j] = dp[i - 1][j] + dp[i][j - 1]; // The number of paths to the current cell is the sum of the paths to the cell above and to the left</span>
+                // Invariant
+<span class="fc" id="L25">                invariantSatisfiesConditions(dp[i][j], dp[i - 1][j], dp[i][j - 1]);</span>
+            }
+        }
+
+<span class="fc" id="L29">        int result = dp[m - 1][n - 1]; // The bottom-right cell contains the total number of unique paths</span>
+
+        // Post-condition
+<span class="fc" id="L32">        resultSatisfiesConditions(result);</span>
+
+<span class="fc" id="L34">        return result;</span>
+    }
+
+    boolean resultSatisfiesConditions(int result) {
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        if (result &lt; 1) throw new RuntimeException(&quot;Result must be bigger than 0&quot;);</span>
+<span class="fc" id="L39">        return true;</span>
+    }
+
+    boolean invariantSatisfiesConditions(int a, int b, int c) {
+<span class="fc bfc" id="L43" title="All 4 branches covered.">        if (a &lt;= b || a &lt;= c) throw new RuntimeException(&quot;Value of a cell should be bigger than both, the value of a cell to the left and of an upper cell&quot;);</span>
+<span class="fc" id="L44">        return true;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
