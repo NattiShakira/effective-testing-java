@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="zest.FindDuplicateTest" time="0.363" tests="3" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate\target\test-classes;C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate\target\classes;C:\Users\bfcfr\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.1\junit-jupiter-5.8.1.jar;C:\Users\bfcfr\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\bfcfr\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\bfcfr\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\bfcfr\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.1\junit-jupiter-params-5.8.1.jar;C:\Users\bfcfr\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\bfcfr\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\bfcfr\.m2\repository\net\jqwik\jqwik\1.8.4\jqwik-1.8.4.jar;C:\Users\bfcfr\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\bfcfr\.m2\repository\net\jqwik\jqwik-api\1.8.4\jqwik-api-1.8.4.jar;C:\Users\bfcfr\.m2\repository\net\jqwik\jqwik-web\1.8.4\jqwik-web-1.8.4.jar;C:\Users\bfcfr\.m2\repository\net\jqwik\jqwik-time\1.8.4\jqwik-time-1.8.4.jar;C:\Users\bfcfr\.m2\repository\net\jqwik\jqwik-engine\1.8.4\jqwik-engine-1.8.4.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Zurich"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CH"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
+    <property name="sun.java.command" value="C:\Users\bfcfr\AppData\Local\Temp\surefire6706378547171959407\surefirebooter-20240421233202928_3.jar C:\Users\bfcfr\AppData\Local\Temp\surefire6706378547171959407 2024-04-21T23-32-02_751-jvmRun1 surefire-20240421233202928_1tmp surefire_0-20240421233202928_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate\target\test-classes;C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate\target\classes;C:\Users\bfcfr\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.1\junit-jupiter-5.8.1.jar;C:\Users\bfcfr\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.1\junit-jupiter-api-5.8.1.jar;C:\Users\bfcfr\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\bfcfr\.m2\repository\org\junit\platform\junit-platform-commons\1.8.1\junit-platform-commons-1.8.1.jar;C:\Users\bfcfr\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.1\junit-jupiter-params-5.8.1.jar;C:\Users\bfcfr\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.1\junit-jupiter-engine-5.8.1.jar;C:\Users\bfcfr\.m2\repository\org\junit\platform\junit-platform-engine\1.8.1\junit-platform-engine-1.8.1.jar;C:\Users\bfcfr\.m2\repository\net\jqwik\jqwik\1.8.4\jqwik-1.8.4.jar;C:\Users\bfcfr\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\bfcfr\.m2\repository\net\jqwik\jqwik-api\1.8.4\jqwik-api-1.8.4.jar;C:\Users\bfcfr\.m2\repository\net\jqwik\jqwik-web\1.8.4\jqwik-web-1.8.4.jar;C:\Users\bfcfr\.m2\repository\net\jqwik\jqwik-time\1.8.4\jqwik-time-1.8.4.jar;C:\Users\bfcfr\.m2\repository\net\jqwik\jqwik-engine\1.8.4\jqwik-engine-1.8.4.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\bfcfr"/>
+    <property name="user.language" value="de"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-01-17"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-17"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\bfcfr\AppData\Local\Temp\surefire6706378547171959407\surefirebooter-20240421233202928_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.6+9-LTS-190"/>
+    <property name="user.name" value="bfcfr"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\bfcfr\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\bfcfr\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2022.3"/>
+    <property name="java.version" value="17.0.6"/>
+    <property name="user.dir" value="C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-17\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;c:\program files\oculus\support\oculus-runtime;c:\windows\system32;c:\windows;c:\windows\system32\wbem;c:\windows\system32\windowspowershell\v1.0\;c:\windows\system32\openssh\;c:\program files\nvidia corporation\nvidia nvdlisr;c:\program files\dotnet\;c:\program files\git\cmd;c:\program files\java\jdk-17\bin;c:\program files\nodejs\;c:\program files\mysql\mysql utilities 1.6\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\CMake\bin;C:\texlive\2024\bin\windows;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\bfcfr\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\bfcfr\AppData\Local\Programs\Python\Python311\;C:\Users\bfcfr\AppData\Local\Microsoft\WindowsApps;C:\Users\bfcfr\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\bfcfr\AppData\Local\Programs\Python\Python311;C:\Users\bfcfr\AppData\Local\GitHubDesktop\bin;C:\dev;C:\Users\bfcfr\AppData\Roaming\npm;C:\Users\bfcfr\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\ffmpeg\bin;C:\Users\bfcfr\AppData\Local\Programs\MiKTeX\miktex\bin\x64\;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.6+9-LTS-190"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="testPreConditionSmallArray" classname="zest.FindDuplicateTest" time="0.017"/>
+  <testcase name="testPostCondition" classname="zest.FindDuplicateTest" time="0.001"/>
+  <testcase name="testInvariantArrayUnchanged" classname="zest.FindDuplicateTest" time="0.003"/>
+  <testcase name="testInvalidTwoElementArray" classname="zest.FindDuplicateTest" time="0.0"/>
+  <testcase name="testNormalOperation" classname="zest.FindDuplicateTest" time="0.001"/>
+  <testcase name="testPreConditionNullArray" classname="zest.FindDuplicateTest" time="0.001"/>
+  <testcase name="testPreConditionElementTooLarge" classname="zest.FindDuplicateTest" time="0.004"/>
+  <testcase name="testPreConditionElementTooSmall" classname="zest.FindDuplicateTest" time="0.001"/>
+  <testcase name="testConstructor" classname="zest.FindDuplicateTest" time="0.0"/>
+  <testcase name="testExactlyTwoElements" classname="zest.FindDuplicateTest" time="0.002"/>
+  <testcase name="everyResultIsADuplicate" classname="zest.FindDuplicateTest" time="0.297">
+    <system-out><![CDATA[timestamp = 2024-04-21T23:32:03.971957300, FindDuplicateTest:everyResultIsADuplicate = 
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 11         | # of all combined edge cases
+edge-cases#tried = 11         | # of edge cases tried in current run
+seed = 6033278731647019915    | random seed to reproduce generated values
+
+
+]]></system-out>
+  </testcase>
+  <testcase name="arrayIsUnchangedAfterMethodCall" classname="zest.FindDuplicateTest" time="0.027">
+    <system-out><![CDATA[timestamp = 2024-04-21T23:32:04.002558700, FindDuplicateTest:arrayIsUnchangedAfterMethodCall = 
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 11         | # of all combined edge cases
+edge-cases#tried = 11         | # of edge cases tried in current run
+seed = 3292243179348084139    | random seed to reproduce generated values
+
+
+]]></system-out>
+  </testcase>
+  <testcase name="methodIsIdempotent" classname="zest.FindDuplicateTest" time="0.025">
+    <system-out><![CDATA[timestamp = 2024-04-21T23:32:04.027874800, FindDuplicateTest:methodIsIdempotent = 
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 11         | # of all combined edge cases
+edge-cases#tried = 11         | # of edge cases tried in current run
+seed = -247820482698520744    | random seed to reproduce generated values
+
+
+]]></system-out>
+  </testcase>
+</testsuite>

@@ -1,0 +1,211 @@
+"C:\Program Files\Java\jdk-17\bin\java.exe" "-Dmaven.multiModuleProjectDirectory=C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate" -Djansi.passthrough=true -Dmaven.home=C:\apache-maven-3.9.6 -Dclassworlds.conf=C:\apache-maven-3.9.6\bin\m2.conf "-Dmaven.ext.class.path=C:\Program Files\JetBrains\IntelliJ IDEA 2022.3\plugins\maven\lib\maven-event-listener.jar" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2022.3\lib\idea_rt.jar=57523:C:\Program Files\JetBrains\IntelliJ IDEA 2022.3\bin" -Dfile.encoding=UTF-8 -classpath C:\apache-maven-3.9.6\boot\plexus-classworlds-2.7.0.jar;C:\apache-maven-3.9.6\boot\plexus-classworlds.license org.codehaus.classworlds.Launcher -Didea.version=2022.3 clean test jacoco:report org.pitest:pitest-maven:mutationCoverage
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ---------------------< org.example:FindDuplicate >----------------------
+[INFO] Building FindDuplicate 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ FindDuplicate ---
+[INFO] Deleting C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate\target
+[INFO]
+[INFO] --- jacoco:0.8.11:prepare-agent (default) @ FindDuplicate ---
+[INFO] argLine set to "-javaagent:C:\\Users\\bfcfr\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.11\\org.jacoco.agent-0.8.11-runtime.jar=destfile=C:\\Github Repos\\effective-testing-g15\\assignment02\\FindDuplicate\\target\\jacoco.exec"
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ FindDuplicate ---
+[INFO] skip non existing resourceDirectory C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate\src\main\resources
+[INFO]
+[INFO] --- compiler:3.11.0:compile (default-compile) @ FindDuplicate ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 1 source file with javac [debug target 11] to target\classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ FindDuplicate ---
+[INFO] skip non existing resourceDirectory C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate\src\test\resources
+[INFO]
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ FindDuplicate ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug target 11] to target\test-classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO]
+[INFO] --- surefire:3.2.5:test (default-test) @ FindDuplicate ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running zest.FindDuplicateTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.046 s -- in zest.FindDuplicateTest
+[INFO] Running zest.FindDuplicateTest
+timestamp = 2024-04-21T23:32:03.971957300, FindDuplicateTest:everyResultIsADuplicate =
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 11         | # of all combined edge cases
+edge-cases#tried = 11         | # of edge cases tried in current run
+seed = 6033278731647019915    | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T23:32:04.002558700, FindDuplicateTest:arrayIsUnchangedAfterMethodCall =
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 11         | # of all combined edge cases
+edge-cases#tried = 11         | # of edge cases tried in current run
+seed = 3292243179348084139    | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T23:32:04.027874800, FindDuplicateTest:methodIsIdempotent =
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 11         | # of all combined edge cases
+edge-cases#tried = 11         | # of edge cases tried in current run
+seed = -247820482698520744    | random seed to reproduce generated values
+
+
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.363 s -- in zest.FindDuplicateTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jacoco:0.8.11:report (default-cli) @ FindDuplicate ---
+[INFO] Loading execution data file C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate\target\jacoco.exec
+[INFO] Analyzed bundle 'FindDuplicate' with 1 classes
+[INFO]
+[INFO] --- pitest:1.15.2:mutationCoverage (default-cli) @ FindDuplicate ---
+[INFO] Root dir is : C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate
+[INFO] Found plugin : Default csv report plugin
+[INFO] Found plugin : Default xml report plugin
+[INFO] Found plugin : Default html report plugin
+[INFO] Found plugin : Static initializer code detector plugin
+[INFO] Found plugin : Excluded annotations plugin
+[INFO] Found plugin : Try with resources filter
+[INFO] Found plugin : Inlined finally block filter plugin
+[INFO] Found plugin : Implicit null check filter
+[INFO] Found plugin : Method reference null check filter
+[INFO] Found plugin : For each loop filter
+[INFO] Found plugin : Enum junk filter
+[INFO] Found plugin : Record junk mutation filter
+[INFO] Found plugin : String switch filter
+[INFO] Found plugin : Assertions filter
+[INFO] Found plugin : Enum switch filter
+[INFO] Found plugin : Logging calls filter
+[INFO] Found plugin : Infinite for loop filter
+[INFO] Found plugin : Long running iterator loop filter
+[INFO] Found plugin : For loop counter filter
+[INFO] Found plugin : Kotlin junk mutations filter
+[INFO] Found plugin : Groovy junk mutations filter
+[INFO] Found plugin : Max mutations per class limit
+[INFO] Found plugin : Equals shortcut equivalent mutant filter
+[INFO] Found plugin : Trivial return vals equivalence filter
+[INFO] Found plugin : Filters mutants with line number <= 1
+[INFO] Found plugin : Division by one equivalent mutant filter
+[INFO] Found plugin : Lombok junk mutations filter
+[INFO] Found plugin : Mutant export plugin
+[INFO] Found plugin : Auto add java.awt.headless=true to keep keyboard focus on Mac OS
+[INFO] Found plugin : Auto set number of threads based on machine
+[INFO] Found plugin : Default build verifier
+[INFO] Found plugin : Detect missing JUnit5 plugin
+[INFO] Found plugin : Detect missing TestNG plugin
+[INFO] Found plugin : Detect missing kotlin plugin
+[INFO] Found plugin : Detect missing spring plugin
+[INFO] Found shared classpath plugin : Default mutation engine
+[INFO] Found shared classpath plugin : JUnit 5 test framework support
+[INFO] Found shared classpath plugin : JUnit plugin
+[INFO] Available mutators : EXPERIMENTAL_ARGUMENT_PROPAGATION,FALSE_RETURNS,TRUE_RETURNS,CONDITIONALS_BOUNDARY,CONSTRUCTOR_CALLS,EMPTY_RETURNS,INCREMENTS,INLINE_CONSTS,INVERT_NEGS,MATH,NEGATE_CONDITIONALS,NON_VOID_METHOD_CALLS,NULL_RETURNS,PRIMITIVE_RETURNS,REMOVE_CONDITIONALS_EQUAL_IF,REMOVE_CONDITIONALS_EQUAL_ELSE,REMOVE_CONDITIONALS_ORDER_IF,REMOVE_CONDITIONALS_ORDER_ELSE,VOID_METHOD_CALLS,EXPERIMENTAL_BIG_DECIMAL,EXPERIMENTAL_BIG_INTEGER,EXPERIMENTAL_MEMBER_VARIABLE,EXPERIMENTAL_NAKED_RECEIVER,REMOVE_INCREMENTS,EXPERIMENTAL_SWITCH,EXPERIMENTAL_BIG_DECIMAL,EXPERIMENTAL_BIG_INTEGER
+[INFO] Adding org.pitest:pitest-junit5-plugin to SUT classpath
+[INFO] Adding org.pitest:pitest to SUT classpath
+[INFO] Auto adding org.junit.platform:junit-platform-launcher:jar:1.8.1 < central (https://repo.maven.apache.org/maven2, default, releases) to classpath.
+[INFO] Mutating from C:\Github Repos\effective-testing-g15\assignment02\FindDuplicate\target\classes
+[INFO] Defaulting target classes to match packages in build directory
+[INFO] Defaulting target tests to match packages in test build directory
+23:32:04 PIT >> INFO : Verbose logging is disabled. If you encounter a problem, please enable it before reporting an issue.
+23:32:04 PIT >> INFO : Created 1 mutation test units in pre scan
+23:32:04 PIT >> INFO : Sending 2 test classes to minion
+23:32:04 PIT >> INFO : Sent tests to minion
+/23:32:05 PIT >> INFO : Calculated coverage in 0 seconds.
+23:32:05 PIT >> INFO : Created 1 mutation test units
+23:32:08 PIT >> WARNING : Minion exited abnormally due to TIMED_OUT
+23:32:12 PIT >> WARNING : Minion exited abnormally due to TIMED_OUT
+/================================================================================
+- Mutators
+================================================================================
+> org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator
+>> Generated 4 Killed 4 (100%)
+> KILLED 4 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.IncrementsMutator
+>> Generated 1 Killed 1 (100%)
+> KILLED 1 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator
+>> Generated 1 Killed 1 (100%)
+> KILLED 1 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator
+>> Generated 2 Killed 1 (50%)
+> KILLED 1 SURVIVED 1 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.MathMutator
+>> Generated 2 Killed 1 (50%)
+> KILLED 1 SURVIVED 1 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator
+>> Generated 8 Killed 8 (100%)
+> KILLED 6 SURVIVED 0 TIMED_OUT 2 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+================================================================================
+- Timings
+================================================================================
+> pre-scan for mutations : < 1 second
+> scan classpath : < 1 second
+> coverage and dependency analysis : < 1 second
+> build mutation tests : < 1 second
+> run mutation analysis : 8 seconds
+--------------------------------------------------------------------------------
+> Total  : 8 seconds
+--------------------------------------------------------------------------------
+================================================================================
+- Statistics
+================================================================================
+>> Line Coverage (for mutated classes only): 27/28 (96%)
+>> Generated 18 mutations Killed 16 (89%)
+>> Mutations with no coverage 0. Test strength 89%
+>> Ran 34 tests (1.89 tests per mutation)
+Enhanced functionality available at https://www.arcmutate.com/
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.833 s
+[INFO] Finished at: 2024-04-21T23:32:13+02:00
+[INFO] ------------------------------------------------------------------------
+23:32:13 PIT >> INFO : Completed in 8 seconds
+
+Process finished with exit code 0

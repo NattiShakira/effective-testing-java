@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FindDuplicate.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">FindDuplicate</a> &gt; <a href="index.source.html" class="el_package">zest</a> &gt; <span class="el_source">FindDuplicate.java</span></div><h1>FindDuplicate.java</h1><pre class="source lang-java linenums">package zest;
+
+<span class="fc" id="L3">public class FindDuplicate {</span>
+    public static int findDuplicate(int[] nums) {
+        //pre-conditions: nums cannot be null and must have at least 2 elements:
+        //                elements must be in range [1,n] (inclusive)
+<span class="fc" id="L7">        checkInvariants(nums);</span>
+<span class="fc" id="L8">        int tortoise = nums[0];</span>
+<span class="fc" id="L9">        int hare = nums[0];</span>
+        // Phase 1: Finding the intersection point of the two runners.
+
+        do {
+<span class="fc" id="L13">            tortoise = nums[tortoise];</span>
+<span class="fc" id="L14">            hare = nums[nums[hare]];</span>
+<span class="fc bfc" id="L15" title="All 2 branches covered.">        } while (tortoise != hare);</span>
+
+        // Phase 2: Finding the &quot;entrance&quot; to the cycle.
+<span class="fc" id="L18">        tortoise = nums[0];</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        while (tortoise != hare) {</span>
+<span class="fc" id="L20">            tortoise = nums[tortoise];</span>
+<span class="fc" id="L21">            hare = nums[hare];</span>
+        }
+
+        //post-conditions: method must return an integer that is a duplicate number found in the array nums
+        //                 returned duplicate must exist and occur more than once
+
+<span class="fc" id="L27">        final int duplicate = hare;</span>
+<span class="fc" id="L28">        int occurrences = 0;</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        for (int num : nums) {</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">            if (num == duplicate) {</span>
+<span class="fc" id="L31">                occurrences++;</span>
+            }
+        }
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        if (occurrences &lt; 2) {</span>
+<span class="nc" id="L35">            throw new IllegalStateException(&quot;The returned number is not a duplicate.&quot;);</span>
+        }
+        //final invariant checks
+<span class="fc" id="L38">        checkInvariants(nums);</span>
+
+<span class="fc" id="L40">        return hare;</span>
+    }
+
+    //Invariants: Array structure must stay the same.
+    //            The content of the Array cannot change and must be valid according to constraints.
+    private static void checkInvariants(int[] nums) {
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        if (nums == null) {</span>
+<span class="fc" id="L47">            throw new IllegalStateException(&quot;The array must not be null.&quot;);</span>
+        }
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (nums.length &lt; 2) {</span>
+<span class="fc" id="L50">            throw new IllegalStateException(&quot;Array must have at least two elements.&quot;);</span>
+        }
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        for (int num : nums) {</span>
+<span class="fc bfc" id="L53" title="All 4 branches covered.">            if (num &lt; 1 || num &gt; nums.length - 1) {</span>
+<span class="fc" id="L54">                throw new IllegalStateException(&quot;Array elements must be within the range 1 to &quot; + (nums.length - 1));</span>
+            }
+        }
+<span class="fc" id="L57">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
