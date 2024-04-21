@@ -1,0 +1,106 @@
+timestamp = 2024-04-21T20:15:27.620387200, CourseScheduleTest:invalidNegativeIndicesInPrerequisitesProperty = 
+                              |-----------------------jqwik-----------------------
+tries = 5                     | # of calls to property
+checks = 5                    | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -1103515626404812938   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T20:15:27.633403700, CourseScheduleTest:selfReferencingPrerequisitesProperty = 
+                              |-----------------------jqwik-----------------------
+tries = 5                     | # of calls to property
+checks = 5                    | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -1224793561321797721   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T20:15:28.503592800, CourseScheduleTest:successfulCourseCompletionProperty = 
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 16         | # of all combined edge cases
+edge-cases#tried = 16         | # of edge cases tried in current run
+seed = -8959911322454358910   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T20:15:28.511581600, CourseScheduleTest:emptyPrerequisiteArrayProperty = 
+                              |-----------------------jqwik-----------------------
+tries = 100                   | # of calls to property
+checks = 100                  | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = 1676611996509287785    | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T20:15:28.516587200, CourseScheduleTest:noCoursesProperty = 
+                              |-----------------------jqwik-----------------------
+tries = 1                     | # of calls to property
+checks = 1                    | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -1185621587250848903   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T20:15:28.544607700, CourseScheduleTest:invalidNegativeNumberOfCoursesProperty = 
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 4          | # of all combined edge cases
+edge-cases#tried = 4          | # of edge cases tried in current run
+seed = 1601903048333917773    | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T20:15:28.551591300, CourseScheduleTest:prerequisitesExceedingCourseCountProperty = 
+                              |-----------------------jqwik-----------------------
+tries = 5                     | # of calls to property
+checks = 5                    | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = 1129429001101677793    | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T20:15:28.557584900, CourseScheduleTest:handlingEmptyPrerequisitesArraysProperty = 
+                              |-----------------------jqwik-----------------------
+tries = 10                    | # of calls to property
+checks = 10                   | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = 8146435184280239374    | random seed to reproduce generated values
+
+
+
+Process finished with exit code 0

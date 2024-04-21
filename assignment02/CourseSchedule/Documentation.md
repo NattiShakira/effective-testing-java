@@ -1,12 +1,11 @@
 # Task 1: Code Coverage
 
-The class id designed to return a boolean value in detecting if all the courses can be completed given the
+The class is designed to return a boolean value. It returns true if all the courses are completed given the
 prerequisites.
 This involves building a graph and detecting cycles. To reach 100% line coverage:
 
 - Detection of cycle: The test 'noCourseDueToCycle' uses a scenario where two courses form a direct cycle ({1, 0}, {0,
-  1}),
-  testing the graph's capability to detect and report the impossibility of completing the courses. Each course has as
+  1}), testing the graph's capability to detect the impossibility of completing the courses since each course has as
   prerequisite the other one.
 - Course completion with no cycles: The test 'twoCoursesNoCycle' provides prerequisites that do not form a cycle ({1,
   0}).
@@ -34,18 +33,17 @@ The following design contracts are incorporated into the source code:
   when the size of the graph it's different from numCourses.
 - Every list in the graph should only contain valid course indices. An invariant throws a 'RuntimeException' if any list
   contains an invalid index, meaning (course < 0 || course >= numCourses).
-- The visited and onPath arrays must correctly reflect the current state of each node's visitation and path inclusion
+- The 'visited' and 'onPath' arrays must correctly reflect the current state of each node's visitation and path inclusion
   status.
-  An invariant checks two conditions, one if (!visited[i]), then it throws this exception: "Node visitation status is
+  An invariant checks the two conditions. The first one if (!visited[i]) throws this exception: "Node visitation status is
   incorrectly marked as not visited."
-  The other one if (onPath[i]), then it throws this exception: "Node path status is incorrectly marked as still on
+  The second one if (onPath[i]) throws this exception: "Node path status is incorrectly marked as still on
   path.".
 - When checking for cycles recursively through neighbors, the node currently being checked should always be marked as
   being visited and as being on the current path.
-  An invariant checks two conditions, one if (!visited[current]) then it throws this exception: "Node should be marked
+  An invariant checks the two conditions. the first one if (!visited[current]) throws the exception: "Node should be marked
   as visited but is not."
-  The other one if (!onPath[current]), then it throws this exception: "Node should be marked as being on the path but is
-  not."
+  The second one if (!onPath[current]), throws the exception: "Node should be marked as being on the path but isn't."
 
 # Task 3: Testing Contracts
 
@@ -81,3 +79,14 @@ current tests safeguard against. This limitation stems from the robustness and t
 the class implementation.
 
 # Task 4: Property-Based Testing
+The following properties were then incorporated and finalized with Jqwik:
+
+- 'noCoursesProperty' validates that the method returns true when there is exactly one course with no prerequisites. 
+- 'emptyPrerequisiteArrayProperty' confirms that the method returns true for any number of courses provided there are no prerequisites. 
+- 'successfulCourseCompletionProperty' validates that courses can be completed successfully given valid prerequisites, testing with a broad range of courses.
+- 'invalidNegativeNumberOfCoursesProperty' checks for proper handling of negative numbers of courses, expecting an exception to enforce correct input validation.
+- 'prerequisitesExceedingCourseCountProperty' tests that providing prerequisites with course indices that exceed the number of available courses results in an exception.
+- 'selfReferencingPrerequisitesProperty' verifies that prerequisites in which a course is its own prerequisite lead to an exception, as this condition should logically prevent course completion.
+- 'handlingEmptyPrerequisitesArraysProperty' examines the behavior when prerequisites are empty arrays for zero courses, expecting an exception due to invalid course count.
+
+The jqwik output can be seen in the log.txt file. The line coverage is the same since the same invariants are kept.
