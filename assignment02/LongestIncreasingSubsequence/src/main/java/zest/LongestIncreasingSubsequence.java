@@ -37,18 +37,18 @@ public class LongestIncreasingSubsequence {
         return maxLength;
     }
 
-    Boolean resultSatisfiesConditions(int result, int[] array) {
+    boolean resultSatisfiesConditions(int result, int[] array) {
         if (result < 0) throw new RuntimeException("Result must be a non-negative integer");
         if (result > array.length) throw new RuntimeException("Result cannot be bigger that the length of the input array");
         return true;
     }
 
-    Boolean invariant1SatisfiesConditions(int[] dp, int[] nums) {
+    boolean invariant1SatisfiesConditions(int[] dp, int[] nums) {
         if (dp.length != nums.length) throw new RuntimeException("DP array has to have the same length as the input array");
         return true;
     }
 
-    Boolean invariant2SatisfiesConditions(int num) {
+    boolean invariant2SatisfiesConditions(int num) {
         if (num < 1) throw new RuntimeException("Elements of DP array cannot be smaller than 1");
         return true;
     }
