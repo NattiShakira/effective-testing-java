@@ -22,7 +22,7 @@ class UniquePathsTest {
 
     // Tests for Task 3. Testing Contracts
     @Test
-    void testPostConditionsAreSatisfied() {
+    void testPreConditionsAreSatisfied() {
         assertEquals(28, uniquePaths.uniquePaths(3, 7));
         assertThrows(IllegalArgumentException.class, () -> uniquePaths.uniquePaths(0, 7));
         assertThrows(IllegalArgumentException.class, () -> uniquePaths.uniquePaths(-1, 7));
