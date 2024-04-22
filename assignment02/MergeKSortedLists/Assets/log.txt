@@ -1,0 +1,15 @@
+timestamp = 2024-04-22T10:36:55.990768700, MergeKSortedListsTest:test6alwaysSorted =
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 10         | # of all combined edge cases
+edge-cases#tried = 10         | # of edge cases tried in current run
+seed = -3075539815027598155   | random seed to reproduce generated values
+
+
+
+Process finished with exit code 0
