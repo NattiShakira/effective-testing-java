@@ -14,7 +14,26 @@ class TreeNode {
 public class SortedArrayToBST {
 
     public zest.TreeNode sortedArrayToBST(int[] nums) {
+        if(nums == null){
+            throw new IllegalArgumentException();
+        }
+        cleanData(nums);
+
         return constructBSTRecursive(nums, 0, nums.length - 1);
+    }
+
+    private void cleanData(int[] suspect){
+        if(suspect.length > 10000){
+            throw new IllegalArgumentException("The input array is too big!");
+        }
+        for(int i = 0; i < suspect.length - 1; i++){
+            if (suspect[i] > suspect[i + 1]) {
+                throw new IllegalArgumentException("The input array is not sorted in ascending order!");
+            }
+            if (suspect[i] == suspect[i + 1]) {
+                throw new IllegalArgumentException("The input array contains duplicate elements!");
+            }
+        }
     }
 
     private zest.TreeNode constructBSTRecursive(int[] nums, int left, int right) {

@@ -35,6 +35,6 @@ be flawed if you could get to these checks and trigger them from outside).
 
 ## Task 4: Property-Based Testing
 
-Given the number of tests run by jqwik and the size constraints of this task it was not feasible to test "all" 
+Given the sheer number of tests run by jqwik and the size constraints of this task it was not feasible to test "all" 
 properties that came to mind (namely if all input elements are present in the output one). 
 But I did include an extensive case for ordering (null and empty input do not make sense to be tested with properties).
