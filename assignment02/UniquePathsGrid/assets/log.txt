@@ -1,0 +1,265 @@
+1. After running tests for Task 1. Code coverage:
+
+"C:\Users\Juan Carlos\.jdks\corretto-11.0.23\bin\java.exe" "-Dmaven.multiModuleProjectDirectory=D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid" -Djansi.passthrough=true "-Dmaven.home=C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3" "-Dclassworlds.conf=C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3\bin\m2.conf" "-Dmaven.ext.class.path=C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven-event-listener.jar" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\lib\idea_rt.jar=49914:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\bin" -Dfile.encoding=windows-1252 -classpath "C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3\boot\plexus-classworlds-2.7.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3\boot\plexus-classworlds.license" org.codehaus.classworlds.Launcher -Didea.version=2024.1 clean test jacoco:report
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< org.example:UniquePathsGrid >---------------------
+[INFO] Building UniquePathsGrid 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ UniquePathsGrid ---
+[INFO] Deleting D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\target
+[INFO]
+[INFO] --- jacoco:0.8.7:prepare-agent (default) @ UniquePathsGrid ---
+[INFO] argLine set to "-javaagent:C:\\Users\\Juan Carlos\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.7\\org.jacoco.agent-0.8.7-runtime.jar=destfile=D:\\git projects\\effective-testing-g15\\assignment02\\UniquePathsGrid\\target\\jacoco.exec"
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ UniquePathsGrid ---
+[INFO] skip non existing resourceDirectory D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\src\main\resources
+[INFO]
+[INFO] --- compiler:3.11.0:compile (default-compile) @ UniquePathsGrid ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 1 source file with javac [debug target 11] to target\classes
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ UniquePathsGrid ---
+[INFO] skip non existing resourceDirectory D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\src\test\resources
+[INFO]
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ UniquePathsGrid ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug target 11] to target\test-classes
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ UniquePathsGrid ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running zest.UniquePathsTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.111 s -- in zest.UniquePathsTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jacoco:0.8.7:report (generate-report) @ UniquePathsGrid ---
+[INFO] Loading execution data file D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\target\jacoco.exec
+[INFO] Analyzed bundle 'UniquePathsGrid' with 1 classes
+[INFO]
+[INFO] --- jacoco:0.8.7:report (default-cli) @ UniquePathsGrid ---
+[INFO] Loading execution data file D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\target\jacoco.exec
+[INFO] Analyzed bundle 'UniquePathsGrid' with 1 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.744 s
+[INFO] Finished at: 2024-04-21T20:55:21+02:00
+[INFO] ------------------------------------------------------------------------
+
+Process finished with exit code 0
+
+
+
+2. After running tests for Task 3. Testing contracts:
+
+
+"C:\Users\Juan Carlos\.jdks\corretto-11.0.23\bin\java.exe" "-Dmaven.multiModuleProjectDirectory=D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid" -Djansi.passthrough=true "-Dmaven.home=C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3" "-Dclassworlds.conf=C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3\bin\m2.conf" "-Dmaven.ext.class.path=C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven-event-listener.jar" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\lib\idea_rt.jar=50874:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\bin" -Dfile.encoding=windows-1252 -classpath "C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3\boot\plexus-classworlds-2.7.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3\boot\plexus-classworlds.license" org.codehaus.classworlds.Launcher -Didea.version=2024.1 clean test jacoco:report
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< org.example:UniquePathsGrid >---------------------
+[INFO] Building UniquePathsGrid 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ UniquePathsGrid ---
+[INFO] Deleting D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\target
+[INFO]
+[INFO] --- jacoco:0.8.7:prepare-agent (default) @ UniquePathsGrid ---
+[INFO] argLine set to "-javaagent:C:\\Users\\Juan Carlos\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.7\\org.jacoco.agent-0.8.7-runtime.jar=destfile=D:\\git projects\\effective-testing-g15\\assignment02\\UniquePathsGrid\\target\\jacoco.exec"
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ UniquePathsGrid ---
+[INFO] skip non existing resourceDirectory D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\src\main\resources
+[INFO]
+[INFO] --- compiler:3.11.0:compile (default-compile) @ UniquePathsGrid ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 1 source file with javac [debug target 11] to target\classes
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ UniquePathsGrid ---
+[INFO] skip non existing resourceDirectory D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\src\test\resources
+[INFO]
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ UniquePathsGrid ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug target 11] to target\test-classes
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ UniquePathsGrid ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running zest.UniquePathsTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.115 s -- in zest.UniquePathsTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jacoco:0.8.7:report (generate-report) @ UniquePathsGrid ---
+[INFO] Loading execution data file D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\target\jacoco.exec
+[INFO] Analyzed bundle 'UniquePathsGrid' with 1 classes
+[INFO]
+[INFO] --- jacoco:0.8.7:report (default-cli) @ UniquePathsGrid ---
+[INFO] Loading execution data file D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\target\jacoco.exec
+[INFO] Analyzed bundle 'UniquePathsGrid' with 1 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.018 s
+[INFO] Finished at: 2024-04-21T20:58:41+02:00
+[INFO] ------------------------------------------------------------------------
+
+Process finished with exit code 0
+
+
+
+3. After running tests for Task 4. Property-based testing:
+
+
+"C:\Users\Juan Carlos\.jdks\corretto-11.0.23\bin\java.exe" "-Dmaven.multiModuleProjectDirectory=D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid" -Djansi.passthrough=true "-Dmaven.home=C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3" "-Dclassworlds.conf=C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3\bin\m2.conf" "-Dmaven.ext.class.path=C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven-event-listener.jar" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\lib\idea_rt.jar=51151:C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\bin" -Dfile.encoding=windows-1252 -classpath "C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3\boot\plexus-classworlds-2.7.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2024.1\plugins\maven\lib\maven3\boot\plexus-classworlds.license" org.codehaus.classworlds.Launcher -Didea.version=2024.1 clean test jacoco:report
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< org.example:UniquePathsGrid >---------------------
+[INFO] Building UniquePathsGrid 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ UniquePathsGrid ---
+[INFO] Deleting D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\target
+[INFO]
+[INFO] --- jacoco:0.8.7:prepare-agent (default) @ UniquePathsGrid ---
+[INFO] argLine set to "-javaagent:C:\\Users\\Juan Carlos\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.7\\org.jacoco.agent-0.8.7-runtime.jar=destfile=D:\\git projects\\effective-testing-g15\\assignment02\\UniquePathsGrid\\target\\jacoco.exec"
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ UniquePathsGrid ---
+[INFO] skip non existing resourceDirectory D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\src\main\resources
+[INFO]
+[INFO] --- compiler:3.11.0:compile (default-compile) @ UniquePathsGrid ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 1 source file with javac [debug target 11] to target\classes
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ UniquePathsGrid ---
+[INFO] skip non existing resourceDirectory D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\src\test\resources
+[INFO]
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ UniquePathsGrid ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug target 11] to target\test-classes
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ UniquePathsGrid ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running zest.UniquePathsTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.117 s -- in zest.UniquePathsTest
+[INFO] Running zest.UniquePathsTest
+timestamp = 2024-04-21T21:01:05.292207500, UniquePathsTest:testOnlyOneRow =
+                              |-----------------------jqwik-----------------------
+tries = 100                   | # of calls to property
+checks = 100                  | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -8016476826450414510   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T21:01:05.330208100, UniquePathsTest:testOnlyOneColumn =
+                              |-----------------------jqwik-----------------------
+tries = 100                   | # of calls to property
+checks = 100                  | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -3388277229726484550   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T21:01:05.525208500, UniquePathsTest:testInvalidM =
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 887                  | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 36         | # of all combined edge cases
+edge-cases#tried = 36         | # of edge cases tried in current run
+seed = -2496279026651508710   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T21:01:05.599208800, UniquePathsTest:testInvalidN =
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 865                  | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 36         | # of all combined edge cases
+edge-cases#tried = 36         | # of edge cases tried in current run
+seed = -724610369839458943    | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T21:01:05.613213, UniquePathsTest:testvValidM =
+                              |-----------------------jqwik-----------------------
+tries = 100                   | # of calls to property
+checks = 100                  | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -6539847776742540231   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T21:01:05.626208400, UniquePathsTest:testvValidN =
+                              |-----------------------jqwik-----------------------
+tries = 100                   | # of calls to property
+checks = 100                  | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = 9012200827292702339    | random seed to reproduce generated values
+
+
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.727 s -- in zest.UniquePathsTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jacoco:0.8.7:report (generate-report) @ UniquePathsGrid ---
+[INFO] Loading execution data file D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\target\jacoco.exec
+[INFO] Analyzed bundle 'UniquePathsGrid' with 1 classes
+[INFO]
+[INFO] --- jacoco:0.8.7:report (default-cli) @ UniquePathsGrid ---
+[INFO] Loading execution data file D:\git projects\effective-testing-g15\assignment02\UniquePathsGrid\target\jacoco.exec
+[INFO] Analyzed bundle 'UniquePathsGrid' with 1 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.574 s
+[INFO] Finished at: 2024-04-21T21:01:06+02:00
+[INFO] ------------------------------------------------------------------------
+
+Process finished with exit code 0

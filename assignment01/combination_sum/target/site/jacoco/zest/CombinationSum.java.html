@@ -4,35 +4,35 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-<span class="fc" id="L7">public class CombinationSum {</span>
+<span class="nc" id="L7">public class CombinationSum {</span>
     public static List&lt;List&lt;Integer&gt;&gt; combinationSum(int[] candidates, int target) {
-<span class="fc" id="L9">        Arrays.sort(candidates);</span>
-<span class="fc" id="L10">        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;List&lt;Integer&gt;&gt;();</span>
-<span class="fc" id="L11">        getResult(result, new ArrayList&lt;Integer&gt;(), candidates, target, 0);</span>
+<span class="nc" id="L9">        Arrays.sort(candidates);</span>
+<span class="nc" id="L10">        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;List&lt;Integer&gt;&gt;();</span>
+<span class="nc" id="L11">        getResult(result, new ArrayList&lt;Integer&gt;(), candidates, target, 0);</span>
 
-<span class="fc" id="L13">        return result;</span>
+<span class="nc" id="L13">        return result;</span>
     }
 
     private static void getResult(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; cur, int[] candidates, int target, int start) {
-<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (target &gt; 0) {</span>
-<span class="fc bfc" id="L18" title="All 4 branches covered.">            for (int i = start; i &lt; candidates.length &amp;&amp; target &gt;= candidates[i]; i++) {</span>
+<span class="nc bnc" id="L17" title="All 2 branches missed.">        if (target &gt; 0) {</span>
+<span class="nc bnc" id="L18" title="All 4 branches missed.">            for (int i = start; i &lt; candidates.length &amp;&amp; target &gt;= candidates[i]; i++) {</span>
                 //bugfixes
-<span class="fc bfc" id="L20" title="All 2 branches covered.">                if(result.size() &gt;= 149){</span>
-<span class="fc" id="L21">                    break;</span>
+<span class="nc bnc" id="L20" title="All 2 branches missed.">                if(result.size() &gt;= 149){</span>
+<span class="nc" id="L21">                    break;</span>
                 }
-<span class="fc bfc" id="L23" title="All 2 branches covered.">                if(candidates[i] &lt;= 0){</span>
-<span class="fc" id="L24">                    continue;</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">                if(candidates[i] &lt;= 0){</span>
+<span class="nc" id="L24">                    continue;</span>
                 }
-<span class="fc bfc" id="L26" title="All 4 branches covered.">                if(i &gt; 0 &amp;&amp; candidates[i] == candidates[i-1]){</span>
-<span class="fc" id="L27">                    continue;</span>
+<span class="nc bnc" id="L26" title="All 4 branches missed.">                if(i &gt; 0 &amp;&amp; candidates[i] == candidates[i-1]){</span>
+<span class="nc" id="L27">                    continue;</span>
                 }
-<span class="fc" id="L29">                cur.add(candidates[i]);</span>
-<span class="fc" id="L30">                getResult(result, cur, candidates, target - candidates[i], i);</span>
-<span class="fc" id="L31">                cur.remove(cur.size() - 1);</span>
+<span class="nc" id="L29">                cur.add(candidates[i]);</span>
+<span class="nc" id="L30">                getResult(result, cur, candidates, target - candidates[i], i);</span>
+<span class="nc" id="L31">                cur.remove(cur.size() - 1);</span>
             }
-<span class="fc bfc" id="L33" title="All 2 branches covered.">        } else if (target == 0) {</span>
-<span class="fc" id="L34">            result.add(new ArrayList&lt;Integer&gt;(cur));</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        } else if (target == 0) {</span>
+<span class="nc" id="L34">            result.add(new ArrayList&lt;Integer&gt;(cur));</span>
         }
-<span class="fc" id="L36">    }</span>
+<span class="nc" id="L36">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

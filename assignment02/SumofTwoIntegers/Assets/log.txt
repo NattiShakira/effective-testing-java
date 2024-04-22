@@ -1,0 +1,211 @@
+"C:\Program Files\Java\jdk-17\bin\java.exe" "-Dmaven.multiModuleProjectDirectory=C:\Github Repos\effective-testing-g15\assignment02\SumofTwoIntegers" -Djansi.passthrough=true -Dmaven.home=C:\apache-maven-3.9.6 -Dclassworlds.conf=C:\apache-maven-3.9.6\bin\m2.conf "-Dmaven.ext.class.path=C:\Program Files\JetBrains\IntelliJ IDEA 2022.3\plugins\maven\lib\maven-event-listener.jar" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2022.3\lib\idea_rt.jar=57169:C:\Program Files\JetBrains\IntelliJ IDEA 2022.3\bin" -Dfile.encoding=UTF-8 -classpath C:\apache-maven-3.9.6\boot\plexus-classworlds-2.7.0.jar;C:\apache-maven-3.9.6\boot\plexus-classworlds.license org.codehaus.classworlds.Launcher -Didea.version=2022.3 clean test jacoco:report org.pitest:pitest-maven:mutationCoverage
+[INFO] Scanning for projects...
+[INFO]
+[INFO] --------------------< org.example:SumOfTwoIntegers >--------------------
+[INFO] Building SumOfTwoIntegers 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.2.0:clean (default-clean) @ SumOfTwoIntegers ---
+[INFO] Deleting C:\Github Repos\effective-testing-g15\assignment02\SumofTwoIntegers\target
+[INFO]
+[INFO] --- jacoco:0.8.11:prepare-agent (default) @ SumOfTwoIntegers ---
+[INFO] argLine set to "-javaagent:C:\\Users\\bfcfr\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.11\\org.jacoco.agent-0.8.11-runtime.jar=destfile=C:\\Github Repos\\effective-testing-g15\\assignment02\\SumofTwoIntegers\\target\\jacoco.exec"
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ SumOfTwoIntegers ---
+[INFO] skip non existing resourceDirectory C:\Github Repos\effective-testing-g15\assignment02\SumofTwoIntegers\src\main\resources
+[INFO]
+[INFO] --- compiler:3.11.0:compile (default-compile) @ SumOfTwoIntegers ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 1 source file with javac [debug target 11] to target\classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ SumOfTwoIntegers ---
+[INFO] skip non existing resourceDirectory C:\Github Repos\effective-testing-g15\assignment02\SumofTwoIntegers\src\test\resources
+[INFO]
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ SumOfTwoIntegers ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug target 11] to target\test-classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO]
+[INFO] --- surefire:3.2.5:test (default-test) @ SumOfTwoIntegers ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running zest.SumOfTwoIntegersTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 s -- in zest.SumOfTwoIntegersTest
+[INFO] Running zest.SumOfTwoIntegersTest
+timestamp = 2024-04-21T23:19:36.220173900, SumOfTwoIntegersTest:associativityProperty =
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 729        | # of all combined edge cases
+edge-cases#tried = 177        | # of edge cases tried in current run
+seed = 961992264930399014     | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T23:19:36.237691, SumOfTwoIntegersTest:inverseElementProperty =
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 9          | # of all combined edge cases
+edge-cases#tried = 9          | # of edge cases tried in current run
+seed = -7461146131950515025   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T23:19:36.251906600, SumOfTwoIntegersTest:identityElementProperty =
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 9          | # of all combined edge cases
+edge-cases#tried = 9          | # of edge cases tried in current run
+seed = -7895896712072923481   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-21T23:19:36.269483100, SumOfTwoIntegersTest:commutativityProperty =
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 81         | # of all combined edge cases
+edge-cases#tried = 72         | # of edge cases tried in current run
+seed = -3605723086296035622   | random seed to reproduce generated values
+
+
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.309 s -- in zest.SumOfTwoIntegersTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jacoco:0.8.11:report (default-cli) @ SumOfTwoIntegers ---
+[INFO] Loading execution data file C:\Github Repos\effective-testing-g15\assignment02\SumofTwoIntegers\target\jacoco.exec
+[INFO] Analyzed bundle 'SumOfTwoIntegers' with 1 classes
+[INFO]
+[INFO] --- pitest:1.15.2:mutationCoverage (default-cli) @ SumOfTwoIntegers ---
+[INFO] Root dir is : C:\Github Repos\effective-testing-g15\assignment02\SumofTwoIntegers
+[INFO] Found plugin : Default csv report plugin
+[INFO] Found plugin : Default xml report plugin
+[INFO] Found plugin : Default html report plugin
+[INFO] Found plugin : Static initializer code detector plugin
+[INFO] Found plugin : Excluded annotations plugin
+[INFO] Found plugin : Try with resources filter
+[INFO] Found plugin : Inlined finally block filter plugin
+[INFO] Found plugin : Implicit null check filter
+[INFO] Found plugin : Method reference null check filter
+[INFO] Found plugin : For each loop filter
+[INFO] Found plugin : Enum junk filter
+[INFO] Found plugin : Record junk mutation filter
+[INFO] Found plugin : String switch filter
+[INFO] Found plugin : Assertions filter
+[INFO] Found plugin : Enum switch filter
+[INFO] Found plugin : Logging calls filter
+[INFO] Found plugin : Infinite for loop filter
+[INFO] Found plugin : Long running iterator loop filter
+[INFO] Found plugin : For loop counter filter
+[INFO] Found plugin : Kotlin junk mutations filter
+[INFO] Found plugin : Groovy junk mutations filter
+[INFO] Found plugin : Max mutations per class limit
+[INFO] Found plugin : Equals shortcut equivalent mutant filter
+[INFO] Found plugin : Trivial return vals equivalence filter
+[INFO] Found plugin : Filters mutants with line number <= 1
+[INFO] Found plugin : Division by one equivalent mutant filter
+[INFO] Found plugin : Lombok junk mutations filter
+[INFO] Found plugin : Mutant export plugin
+[INFO] Found plugin : Auto add java.awt.headless=true to keep keyboard focus on Mac OS
+[INFO] Found plugin : Auto set number of threads based on machine
+[INFO] Found plugin : Default build verifier
+[INFO] Found plugin : Detect missing JUnit5 plugin
+[INFO] Found plugin : Detect missing TestNG plugin
+[INFO] Found plugin : Detect missing kotlin plugin
+[INFO] Found plugin : Detect missing spring plugin
+[INFO] Found shared classpath plugin : Default mutation engine
+[INFO] Found shared classpath plugin : JUnit 5 test framework support
+[INFO] Found shared classpath plugin : JUnit plugin
+[INFO] Available mutators : EXPERIMENTAL_ARGUMENT_PROPAGATION,FALSE_RETURNS,TRUE_RETURNS,CONDITIONALS_BOUNDARY,CONSTRUCTOR_CALLS,EMPTY_RETURNS,INCREMENTS,INLINE_CONSTS,INVERT_NEGS,MATH,NEGATE_CONDITIONALS,NON_VOID_METHOD_CALLS,NULL_RETURNS,PRIMITIVE_RETURNS,REMOVE_CONDITIONALS_EQUAL_IF,REMOVE_CONDITIONALS_EQUAL_ELSE,REMOVE_CONDITIONALS_ORDER_IF,REMOVE_CONDITIONALS_ORDER_ELSE,VOID_METHOD_CALLS,EXPERIMENTAL_BIG_DECIMAL,EXPERIMENTAL_BIG_INTEGER,EXPERIMENTAL_MEMBER_VARIABLE,EXPERIMENTAL_NAKED_RECEIVER,REMOVE_INCREMENTS,EXPERIMENTAL_SWITCH,EXPERIMENTAL_BIG_DECIMAL,EXPERIMENTAL_BIG_INTEGER
+[INFO] Adding org.pitest:pitest-junit5-plugin to SUT classpath
+[INFO] Adding org.pitest:pitest to SUT classpath
+[INFO] Auto adding org.junit.platform:junit-platform-launcher:jar:1.8.1 < central (https://repo.maven.apache.org/maven2, default, releases) to classpath.
+[INFO] Mutating from C:\Github Repos\effective-testing-g15\assignment02\SumofTwoIntegers\target\classes
+[INFO] Defaulting target classes to match packages in build directory
+[INFO] Defaulting target tests to match packages in test build directory
+23:19:36 PIT >> INFO : Verbose logging is disabled. If you encounter a problem, please enable it before reporting an issue.
+23:19:37 PIT >> INFO : Created 1 mutation test units in pre scan
+23:19:37 PIT >> INFO : Sending 2 test classes to minion
+23:19:37 PIT >> INFO : Sent tests to minion
+|23:19:37 PIT >> INFO : Calculated coverage in 0 seconds.
+23:19:37 PIT >> INFO : Created 1 mutation test units
+23:19:41 PIT >> WARNING : Minion exited abnormally due to TIMED_OUT
+/================================================================================
+- Mutators
+================================================================================
+> org.pitest.mutationtest.engine.gregor.mutators.ConditionalsBoundaryMutator
+>> Generated 6 Killed 1 (17%)
+> KILLED 1 SURVIVED 5 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.returns.PrimitiveReturnsMutator
+>> Generated 1 Killed 1 (100%)
+> KILLED 1 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.MathMutator
+>> Generated 3 Killed 3 (100%)
+> KILLED 2 SURVIVED 0 TIMED_OUT 1 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+> org.pitest.mutationtest.engine.gregor.mutators.NegateConditionalsMutator
+>> Generated 7 Killed 7 (100%)
+> KILLED 7 SURVIVED 0 TIMED_OUT 0 NON_VIABLE 0
+> MEMORY_ERROR 0 NOT_STARTED 0 STARTED 0 RUN_ERROR 0
+> NO_COVERAGE 0
+--------------------------------------------------------------------------------
+================================================================================
+- Timings
+================================================================================
+> pre-scan for mutations : < 1 second
+> scan classpath : < 1 second
+> coverage and dependency analysis : < 1 second
+> build mutation tests : < 1 second
+> run mutation analysis : 4 seconds
+--------------------------------------------------------------------------------
+> Total  : 5 seconds
+--------------------------------------------------------------------------------
+================================================================================
+- Statistics
+================================================================================
+>> Line Coverage (for mutated classes only): 11/11 (100%)
+>> Generated 17 mutations Killed 12 (71%)
+>> Mutations with no coverage 0. Test strength 71%
+>> Ran 54 tests (3.18 tests per mutation)
+Enhanced functionality available at https://www.arcmutate.com/
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.116 s
+[INFO] Finished at: 2024-04-21T23:19:42+02:00
+[INFO] ------------------------------------------------------------------------
+23:19:42 PIT >> INFO : Completed in 5 seconds
+
+Process finished with exit code 0

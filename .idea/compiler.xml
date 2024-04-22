@@ -6,7 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="atoi" />
+        <module name="SumOfTwoIntegers" />
         <module name="palindrome" />
+        <module name="FindDuplicate" />
         <module name="atoi-test" />
       </profile>
     </annotationProcessing>
