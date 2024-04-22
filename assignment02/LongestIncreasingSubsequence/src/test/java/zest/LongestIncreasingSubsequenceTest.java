@@ -231,7 +231,7 @@ class LongestIncreasingSubsequenceTest {
                 });
     }
 
-    public int[] concatenateArrays(int[]... arrays) {
+    private int[] concatenateArrays(int[]... arrays) {
         int totalLength = 0;
         for (int[] array : arrays) {
             totalLength += array.length;
