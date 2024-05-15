@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class MovieStreamingManager {
     private FileStreamService fileStreamService;
     private CacheService cacheService;
@@ -9,16 +11,67 @@ public class MovieStreamingManager {
     }
 
     // Method to stream a movie by its ID
-    public StreamingDetails streamMovie(String movieId) {
-        StreamingDetails details = cacheService.getDetails(movieId);
+    public StreamingDetails streamMovie(String movieId) throws MovieStreamingManagerException {
+        StreamingDetails details;
+
+        try {
+            details = cacheService.getDetails(movieId);
+        } catch (CacheServiceException e) {
+            throw new MovieStreamingManagerException("Error occured: " + e);
+
+        }
+
         if (details == null) {
-            MovieMetadata metadata = fileStreamService.retrieveMovie(movieId);
-            String streamToken = fileStreamService.generateToken(movieId);  // Assume there's a method to generate a streaming token
+            MovieMetadata metadata;
+            try {
+                metadata = fileStreamService.retrieveMovie(movieId);
+            } catch (FileStreamServiceException e) {
+                throw new MovieStreamingManagerException("Error occured: " + e);
+            }
+
+            String streamToken;  // Assume there's a method to generate a streaming token
+            try {
+                streamToken = fileStreamService.generateToken(movieId);
+            } catch (FileStreamServiceException e) {
+                throw new MovieStreamingManagerException("Error occured: " + e);
+            }
+
             details = new StreamingDetails(movieId, streamToken, metadata);
-            cacheService.cacheDetails(movieId, details);
+            try {
+                cacheService.cacheDetails(movieId, details);
+            } catch (CacheServiceException e) {
+                throw new MovieStreamingManagerException("Error occured: " + e);
+            }
         }
         return details;
     }
 
     // Additional methods can be added here for other functionalities
+    public void updateMovieMetadata(String movieId, MovieMetadata metadata) throws MovieStreamingManagerException {
+        try {
+            fileStreamService.updateMetadata(movieId, metadata);
+        } catch (FileStreamServiceException e) {
+            throw new MovieStreamingManagerException("Error occured: " + e);
+        }
+
+        try {
+            cacheService.refreshCache(movieId, metadata);
+        } catch (CacheServiceException e) {
+            throw new MovieStreamingManagerException("Error occured: " + e);
+        }
+    }
+
+    public boolean validateStreamingToken(String token) throws MovieStreamingManagerException {
+        if (token == null) {return false;}
+        List<String> listOfTokens;
+
+        try {
+            listOfTokens = fileStreamService.retrieveListOfTokens();
+        } catch (FileStreamServiceException e) {
+            throw new MovieStreamingManagerException("Error occured: " + e);
+        }
+
+        if (listOfTokens == null) {return false;}
+        return listOfTokens.contains(token);
+    }
 }
