@@ -4,7 +4,7 @@ To do so, it uses a messaging service API (whose implementation is omitted) that
 `MessageProcessor` has a method `processMessages` that sends a number of messages to their receiver.
 
 Write *unit tests* for the `processMessages` method using test doubles instead of the actual messaging service API, after refactoring the code accordingly if needed.
-Specifically, implement tests the cover the following scenarios:
+Specifically, implement tests that cover the following scenarios:
 
 ### A. Number of invocations
 First, test if the appropriate subroutine is called as many times as it should.
