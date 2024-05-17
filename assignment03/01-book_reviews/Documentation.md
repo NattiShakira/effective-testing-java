@@ -68,7 +68,8 @@ using mocks for both dependencies. `BookRatingsFetcher` has been mocked to contr
 The mocks isolate the unit tests from the external systems like the database, enabling for a controlled and decoupled interaction. Moreover, the simulation are faster since there is no need to wait for the database connection and the classes interactions are correctly reflected.
 
 2. - Refactoring:The code has already been refactored to inject `BookRatingsFetcher` via the constructor in the exercise part A, allowing easy replacement with a mock during testing. The method `uniqueAuthors` was added to `BookManager` to retrieve a list of unique authors from the books provided by `BookRatingsFetcher`. The design is adherent to code quality test design principles by decoupling the class from its dependencies.
-   - Unit tests: Tests are created to ensure that `uniqueAuthors` correctly handles and returns unique author names under different conditions such as duplicates in the list, no books, and when the book list is null. Edge cases like empty lists and null values are tested to ensure robust error handling. The previous test has been commented to avoid interference. 
+   - Unit tests: Tests are created to ensure that `uniqueAuthors` correctly handles and returns unique author names under different conditions such as duplicates in the list, no books, and when the book list is null. Edge cases like empty lists and null values are tested to ensure robust error handling.
+     a precondition has been added that throws an Exception when the book-list is null. The previous test has been commented to avoid interference. 
 3. Disadvantages of Using Test Doubles:
 - By using a mock for `BookRatingsFetcher`, the tests might not catch issues that occur with real database queries.
 - If the database schema changes (e.g., the author's field changes in type or name), the mocks will need to be updated to reflect these changes.
