@@ -9,8 +9,8 @@ public class BookRatingsFetcher {
     }
 
     public List<Book> all() {
-    // This would normally fetch data from a database...The implementation is skipped.
-    // ...
+        // This would normally fetch data from a database...The implementation is skipped.
+        // ...
         return null;
     }
 
