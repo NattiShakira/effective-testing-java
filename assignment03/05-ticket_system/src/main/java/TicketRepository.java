@@ -1,4 +1,3 @@
-package support;
 
 // Repository interface for Ticket data access
 public interface TicketRepository {

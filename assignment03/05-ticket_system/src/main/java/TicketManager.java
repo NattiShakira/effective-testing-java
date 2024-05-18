@@ -1,5 +1,3 @@
-package support;
-
 // TicketManager class to handle ticket creation and interaction with services
 public class TicketManager {
     private NotificationService notificationService;
@@ -13,17 +11,34 @@ public class TicketManager {
     }
 
     public void createTicket(Ticket ticket) {
-        // Log the ticket creation
-        logService.logTicketCreation(ticket);
+        if (ticket == null) {
+            throw new IllegalArgumentException("Ticket cannot be null");
+        }
+        if (ticket.getCustomerEmail() == null || ticket.getCustomerEmail().isEmpty()) {
+            throw new IllegalArgumentException("Customer email cannot be empty");
+        }
+        if (ticket.getIssueDescription() == null || ticket.getIssueDescription().isEmpty()) {
+            throw new IllegalArgumentException("Issue description cannot be empty");
+        }
+        try {
+            logService.logTicketCreation(ticket);
+        } catch (Exception e) {
+            System.err.println("Logging failed: " + e.getMessage()); // Handle logging failure
+        }
 
-        // Notify the customer
-        notificationService.notifyCustomer(ticket.getCustomerEmail(), 
-            "Thank you for your request. Your support ticket has been created and will be processed shortly.");
+        try {
+            String message = (ticket.getPriority() == TicketPriority.URGENT) ?
+                    "Thank you for your request. Your support ticket has been created and is being processed as high priority." :
+                    "Thank you for your request. Your support ticket has been created and will be processed shortly.";
+            notificationService.notifyCustomer(ticket.getCustomerEmail(), message);
+        } catch (Exception e) {
+            System.err.println("Notification failed: " + e.getMessage()); // Handle notification failure
+        }
 
         // Save the ticket to the database
         saveTicket(ticket);
     }
-    
+
     // Method to save ticket to a database
     private void saveTicket(Ticket ticket) {
         ticketRepository.save(ticket);

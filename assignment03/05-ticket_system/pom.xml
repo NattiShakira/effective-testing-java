@@ -4,21 +4,75 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ch.uzh.ifi.zest</groupId>
-    <artifactId>CustomerSupportSystem</artifactId>
-    <version>1.0</version>
+    <groupId>org.example</groupId>
+    <artifactId>TicketManagerTest</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jacoco.version>0.8.7</jacoco.version> <!-- Use the latest stable version -->
+        <pitest.version>1.15.2</pitest.version>
+        <junit.jupiter.version>5.9.2</junit.jupiter.version>
+        <jqwik.version>1.8.4</jqwik.version>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>generate-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>${pitest.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>1.2.1</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <targetClasses>
+                        <param>zest.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>zest.*</param>
+                    </targetTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
-        <!-- JUnit Jupiter API -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.2</version>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.jqwik</groupId>
+            <artifactId>jqwik</artifactId>
+            <version>${jqwik.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -27,22 +81,6 @@
             <version>4.5.1</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
-    <build>
-        <plugins>
-            <!-- Maven Surefire Plugin for running tests -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>**3.0.0-M7**</version>
-                <configuration>
-                    <useModulePath>false</useModulePath>
-                </configuration>
-            </plugin>
-        </plugins>
-
-    </build>
 
 </project>
