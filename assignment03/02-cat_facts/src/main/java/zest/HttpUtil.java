@@ -1,7 +1,5 @@
 package zest;
 
-
-
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -11,9 +9,8 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
-public class HttpUtil {
-
-    public static String get(String url) throws IOException {
+public class HttpUtil implements HttpClient {
+    public String get(String url) throws IOException {
         CloseableHttpClient client = HttpClients.createDefault();
         HttpGet request = new HttpGet(url);
         CloseableHttpResponse response = client.execute(request);
@@ -24,6 +21,4 @@ public class HttpUtil {
             response.close();
         }
     }
-
-
 }

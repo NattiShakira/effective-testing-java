@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="atoi" />
-        <module name="SumOfTwoIntegers" />
         <module name="palindrome" />
-        <module name="FindDuplicate" />
+        <module name="CatFactsRetriever" />
         <module name="atoi-test" />
+        <module name="SumOfTwoIntegers" />
+        <module name="FindDuplicate" />
+        <module name="payment" />
       </profile>
     </annotationProcessing>
   </component>

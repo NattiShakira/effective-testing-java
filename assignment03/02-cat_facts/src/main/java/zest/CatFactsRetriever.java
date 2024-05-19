@@ -1,12 +1,15 @@
 package zest;
 
-import java.io.*;
-
+import java.io.IOException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
 public class CatFactsRetriever {
+    private final HttpClient httpClient;
+
+    public CatFactsRetriever(HttpClient httpClient) {
+        this.httpClient = httpClient;
+    }
 
     /**
      * Returns a String containing a random fact about cats
@@ -15,11 +18,10 @@ public class CatFactsRetriever {
      * @return      a random fact about cats
      */
     public String retrieveRandom() throws IOException {
-        String response = HttpUtil.get("https://catfact.ninja/fact");
+        String response = httpClient.get("https://catfact.ninja/fact");
         JSONObject jo = new JSONObject(response);
         return jo.getString("fact");
     }
-
     /**
      * Returns a String containing the longest fact about cats
      * as retrieved by querying a list of limit facts from the
@@ -30,12 +32,12 @@ public class CatFactsRetriever {
      * @return      the longest fact from the list
      */
     public String retrieveLongest(int limit) throws IOException {
-        String response = HttpUtil.get("https://catfact.ninja/facts?limit=" + String.valueOf(limit));
+        String response = httpClient.get("https://catfact.ninja/facts?limit=" + limit);
         JSONArray ja = new JSONObject(response).getJSONArray("data");
 
         int length = 0;
         String longestFact = "";
-        for (Object e: ja) {
+        for (Object e : ja) {
             if (e instanceof JSONObject) {
                 JSONObject jo = (JSONObject) e;
                 if (jo.getInt("length") > length) {
@@ -44,9 +46,6 @@ public class CatFactsRetriever {
                 }
             }
         }
-
         return longestFact;
     }
-
 }
-

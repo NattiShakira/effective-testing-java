@@ -1,0 +1,6 @@
+zest\AuditService.class
+zest\Transaction.class
+zest\TransactionService.class
+zest\EventPublisher.class
+zest\FraudDetectionService.class
+zest\PaymentProcessor.class
