@@ -1,21 +1,23 @@
-The `TicketManager` class manages customer support tickets for a software company. It integrates with third-party services for notifications (`NotificationService`) and logging (`LogService`). This class has a method named `createTicket` that performs the following actions:
+The `TicketManager` class manages customer support tickets for a software company. It integrates with third-party services for notifications (`NotificationService`) and logging (`LogService`). 
 ## External dependencies and test doubles
 The `TicketManager` class manages customer support tickets for a software company. The class interacts with several external components:
 - `LogService`: Used to log ticket creation events.
 - `NotificationService` : Used for notifying the customer when a ticket is created.
 -  `TicketRepository`: Manages database interactions for saving ticket details.
 
-LogService and NotificationService should be mocked because they involve external interactions that are outside the core functionality of ticket creation, such as logging and sending notifications, which can involve external systems or services.
-TicketRepository should also be mocked to isolate the database operations from unit tests, ensuring that the tests do not depend on database access and are not affected by the database state.
+`LogService` and `NotificationService` should be mocked because they involve external interactions that are outside the core functionality of ticket creation, such as logging and sending notifications, which can involve external systems or services.
+`TicketRepository` should also be mocked to isolate the database operations from unit tests, ensuring that the tests do not depend on database access and are not affected by the database state.
 
 ## Unit test
 Various implementation to the `TicketManager` class were made to properly handle a variety of input conditions and maintain the integrity of the system's operations:
-- Input Validation: Introduced preconditions to the `createTicket` method to handle various types of invalid inputs effectively:
-   Null Ticket Check: Ensured that the method throws an IllegalArgumentException if the input ticket is null. Empty Customer Email: Added a check to throw an IllegalArgumentException if the customer email is empty or null. Empty Issue Description: Incorporated a validation to throw an IllegalArgumentException if the issue description is empty.
+- Input Validation: Introduced preconditions to the `createTicket` method to handle various types of invalid inputs effectively:  
+  Null Ticket Check: Ensured that the method throws an IllegalArgumentException if the input ticket is null.   
+  Empty Customer Email: Added a check to throw an IllegalArgumentException if the customer email is empty or null.   
+  Empty Issue Description: Incorporated a validation to throw an IllegalArgumentException if the issue description is empty.
 - Logging Before Notification: Used logical sequencing in the code to make sure logging the ticket creation happens before notifying the customer. 
 - Ticket Priority Feedback: Enhanced the method to handle priority message differently for urgent or normal tickets.
 
-The various tests were implemented:
+Various tests were implemented:
 - `checkCreateTicket`: Ensures complete ticket processing workflow including logging, notification, and saving.
 - `checkNormalPriority_NotifyNormally` and `checkUrgentPriority_NotifyUrgently`: Validate that the notification messages are tailored according to the ticket's priority.
 - `checkLogBeforeNotifying`: Confirms the correct sequence of operations, with logging always preceding notification.
