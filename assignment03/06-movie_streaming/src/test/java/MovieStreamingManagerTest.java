@@ -143,7 +143,7 @@ class MovieStreamingManagerTest {
 
         MovieStreamingManagerException exception = assertThrows(MovieStreamingManagerException.class, () -> movieStreamingManager.streamMovie(movieId));
 
-        assertEquals("Error occured: CacheServiceException: Cache service is not available.", exception.getMessage());
+        assertEquals("Error occurred: CacheServiceException: Cache service is not available.", exception.getMessage());
         verify(fileStreamService, never()).retrieveMovie(movieId);
         verify(fileStreamService, never()).generateToken(movieId);
         verify(cacheService, never()).cacheDetails(movieId, streamingDetails);
@@ -156,7 +156,7 @@ class MovieStreamingManagerTest {
 
         MovieStreamingManagerException exception = assertThrows(MovieStreamingManagerException.class, () -> movieStreamingManager.streamMovie(movieId));
 
-        assertEquals("Error occured: FileStreamServiceException: File streaming service is not available.", exception.getMessage());
+        assertEquals("Error occurred: FileStreamServiceException: File streaming service is not available.", exception.getMessage());
         verify(fileStreamService, never()).generateToken(movieId);
         verify(cacheService, never()).cacheDetails(movieId, streamingDetails);
     }
@@ -169,25 +169,9 @@ class MovieStreamingManagerTest {
 
         MovieStreamingManagerException exception = assertThrows(MovieStreamingManagerException.class, () -> movieStreamingManager.streamMovie(movieId));
 
-        assertEquals("Error occured: FileStreamServiceException: File streaming service is not available.", exception.getMessage());
+        assertEquals("Error occurred: FileStreamServiceException: File streaming service is not available.", exception.getMessage());
         verify(cacheService, never()).cacheDetails(movieId, streamingDetails);
     }
-
-    /***@Test
-    void streamMovieCacheServiceCannotCacheDetails() {
-        when(cacheService.getDetails(movieId)).thenReturn(null);
-        when(fileStreamService.retrieveMovie(movieId)).thenReturn(movieMetadata);
-        when(fileStreamService.generateToken(movieId)).thenReturn(streamToken);
-        when(cacheService.cacheDetails(movieId, streamingDetails)).thenThrow(cacheServiceException);
-
-        MovieStreamingManagerException exception = assertThrows(MovieStreamingManagerException.class, () -> {
-            movieStreamingManager.streamMovie(movieId);
-        });
-
-        assertEquals("Error occured: FileStreamServiceException: File streaming service is not available.", exception.getMessage());
-        verify(cacheService, times(1)).cacheDetails(movieId, streamingDetails);
-    }
-     ***/
 
     @Test
     void updateMovieDataFileStreamServiceUnavailable() {
@@ -195,7 +179,7 @@ class MovieStreamingManagerTest {
         when(fileStreamService.updateMetadata(movieId, movieMetadata)).thenThrow(fileStreamServiceException);
         MovieStreamingManagerException exception = assertThrows(MovieStreamingManagerException.class, () -> movieStreamingManager.updateMovieMetadata(movieId, movieMetadata));
 
-        assertEquals("Error occured: FileStreamServiceException: File streaming service is not available.", exception.getMessage());
+        assertEquals("Error occurred: FileStreamServiceException: File streaming service is not available.", exception.getMessage());
         verify(cacheService, never()).cacheDetails(movieId, streamingDetails);
     }
 
@@ -205,7 +189,7 @@ class MovieStreamingManagerTest {
         when(cacheService.refreshCache(movieId, movieMetadata)).thenThrow(cacheServiceException);
         MovieStreamingManagerException exception = assertThrows(MovieStreamingManagerException.class, () -> movieStreamingManager.updateMovieMetadata(movieId, movieMetadata));
 
-        assertEquals("Error occured: CacheServiceException: Cache service is not available.", exception.getMessage());
+        assertEquals("Error occurred: CacheServiceException: Cache service is not available.", exception.getMessage());
         verify(fileStreamService, times(1)).updateMetadata(movieId, movieMetadata);
         verify(cacheService, times(1)).refreshCache(movieId, movieMetadata);
     }
@@ -215,7 +199,7 @@ class MovieStreamingManagerTest {
         when(fileStreamService.retrieveListOfTokens()).thenThrow(fileStreamServiceException);
         MovieStreamingManagerException exception = assertThrows(MovieStreamingManagerException.class, () -> movieStreamingManager.validateStreamingToken(streamToken));
 
-        assertEquals("Error occured: FileStreamServiceException: File streaming service is not available.", exception.getMessage());
+        assertEquals("Error occurred: FileStreamServiceException: File streaming service is not available.", exception.getMessage());
         verify(fileStreamService, times(1)).retrieveListOfTokens();
     }
 

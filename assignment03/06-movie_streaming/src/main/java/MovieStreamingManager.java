@@ -17,7 +17,7 @@ public class MovieStreamingManager {
         try {
             details = cacheService.getDetails(movieId);
         } catch (CacheServiceException e) {
-            throw new MovieStreamingManagerException("Error occured: " + e);
+            throw new MovieStreamingManagerException("Error occurred: " + e);
 
         }
 
@@ -26,21 +26,21 @@ public class MovieStreamingManager {
             try {
                 metadata = fileStreamService.retrieveMovie(movieId);
             } catch (FileStreamServiceException e) {
-                throw new MovieStreamingManagerException("Error occured: " + e);
+                throw new MovieStreamingManagerException("Error occurred: " + e);
             }
 
             String streamToken;  // Assume there's a method to generate a streaming token
             try {
                 streamToken = fileStreamService.generateToken(movieId);
             } catch (FileStreamServiceException e) {
-                throw new MovieStreamingManagerException("Error occured: " + e);
+                throw new MovieStreamingManagerException("Error occurred: " + e);
             }
 
             details = new StreamingDetails(movieId, streamToken, metadata);
             try {
                 cacheService.cacheDetails(movieId, details);
             } catch (CacheServiceException e) {
-                throw new MovieStreamingManagerException("Error occured: " + e);
+                throw new MovieStreamingManagerException("Error occurred: " + e);
             }
         }
         return details;
@@ -51,13 +51,13 @@ public class MovieStreamingManager {
         try {
             fileStreamService.updateMetadata(movieId, metadata);
         } catch (FileStreamServiceException e) {
-            throw new MovieStreamingManagerException("Error occured: " + e);
+            throw new MovieStreamingManagerException("Error occurred: " + e);
         }
 
         try {
             cacheService.refreshCache(movieId, metadata);
         } catch (CacheServiceException e) {
-            throw new MovieStreamingManagerException("Error occured: " + e);
+            throw new MovieStreamingManagerException("Error occurred: " + e);
         }
     }
 
@@ -68,7 +68,7 @@ public class MovieStreamingManager {
         try {
             listOfTokens = fileStreamService.retrieveListOfTokens();
         } catch (FileStreamServiceException e) {
-            throw new MovieStreamingManagerException("Error occured: " + e);
+            throw new MovieStreamingManagerException("Error occurred: " + e);
         }
 
         if (listOfTokens == null) {return false;}

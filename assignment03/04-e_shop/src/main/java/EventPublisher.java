@@ -23,8 +23,7 @@ public class EventPublisher {
     }
 
     public List<EventListener> getAllListeners() {
-        List<EventListener> listenersCopy = new ArrayList<>(listeners);
-        return listenersCopy;
+        return new ArrayList<>(listeners);
     }
 
     //Changed method: returns an order
@@ -42,10 +41,10 @@ public class EventPublisher {
         listener.onOrderPlaced(order);
         }
         return order;
-    }
+    }***/
 
     //Changed method: returns a boolean value
-    public boolean publishOrderToAllListeners(Order order) {
+    /***public boolean publishOrderToAllListeners(Order order) {
         boolean methodWorkedCorrectly = false;
 
         if (listeners.isEmpty()) {
@@ -61,7 +60,6 @@ public class EventPublisher {
         }
         methodWorkedCorrectly = true;
         return methodWorkedCorrectly;
-        }
-    ***/
+    }***/
 
 }
