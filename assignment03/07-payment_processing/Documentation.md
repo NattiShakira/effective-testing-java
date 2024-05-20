@@ -1,4 +1,4 @@
-# CatFactRetriever testing documentation by Markus Niemack
+# Payment Processing testing documentation by Markus Niemack
 
 # 1. Refactoring Done
 I had to add a Transaction class, otherwise the code was broken. The code for the interface can be found in the Transaction.java file. Then later,

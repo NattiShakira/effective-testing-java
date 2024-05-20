@@ -11,28 +11,42 @@ public class CatFactsRetriever {
 <span class="fc" id="L11">        this.httpClient = httpClient;</span>
 <span class="fc" id="L12">    }</span>
 
+    /**
+     * Returns a String containing a random fact about cats
+     * as retrieved from the catfact.ninja API.
+     *
+     * @return      a random fact about cats
+     */
     public String retrieveRandom() throws IOException {
-<span class="fc" id="L15">        String response = httpClient.get(&quot;https://catfact.ninja/fact&quot;);</span>
-<span class="fc" id="L16">        JSONObject jo = new JSONObject(response);</span>
-<span class="fc" id="L17">        return jo.getString(&quot;fact&quot;);</span>
+<span class="fc" id="L21">        String response = httpClient.get(&quot;https://catfact.ninja/fact&quot;);</span>
+<span class="fc" id="L22">        JSONObject jo = new JSONObject(response);</span>
+<span class="fc" id="L23">        return jo.getString(&quot;fact&quot;);</span>
     }
-
+    /**
+     * Returns a String containing the longest fact about cats
+     * as retrieved by querying a list of limit facts from the
+     * catfact.ninja API.
+     *
+     * @param limit the maximum number of facts to retrieve from
+     *              the API
+     * @return      the longest fact from the list
+     */
     public String retrieveLongest(int limit) throws IOException {
-<span class="fc" id="L21">        String response = httpClient.get(&quot;https://catfact.ninja/facts?limit=&quot; + limit);</span>
-<span class="fc" id="L22">        JSONArray ja = new JSONObject(response).getJSONArray(&quot;data&quot;);</span>
+<span class="fc" id="L35">        String response = httpClient.get(&quot;https://catfact.ninja/facts?limit=&quot; + limit);</span>
+<span class="fc" id="L36">        JSONArray ja = new JSONObject(response).getJSONArray(&quot;data&quot;);</span>
 
-<span class="fc" id="L24">        int length = 0;</span>
-<span class="fc" id="L25">        String longestFact = &quot;&quot;;</span>
-<span class="fc bfc" id="L26" title="All 2 branches covered.">        for (Object e : ja) {</span>
-<span class="fc bfc" id="L27" title="All 2 branches covered.">            if (e instanceof JSONObject) {</span>
-<span class="fc" id="L28">                JSONObject jo = (JSONObject) e;</span>
-<span class="fc bfc" id="L29" title="All 2 branches covered.">                if (jo.getInt(&quot;length&quot;) &gt; length) {</span>
-<span class="fc" id="L30">                    longestFact = jo.getString(&quot;fact&quot;);</span>
-<span class="fc" id="L31">                    length = jo.getInt(&quot;length&quot;);</span>
+<span class="fc" id="L38">        int length = 0;</span>
+<span class="fc" id="L39">        String longestFact = &quot;&quot;;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for (Object e : ja) {</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">            if (e instanceof JSONObject) {</span>
+<span class="fc" id="L42">                JSONObject jo = (JSONObject) e;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">                if (jo.getInt(&quot;length&quot;) &gt; length) {</span>
+<span class="fc" id="L44">                    longestFact = jo.getString(&quot;fact&quot;);</span>
+<span class="fc" id="L45">                    length = jo.getInt(&quot;length&quot;);</span>
                 }
             }
-<span class="fc" id="L34">        }</span>
-<span class="fc" id="L35">        return longestFact;</span>
+<span class="fc" id="L48">        }</span>
+<span class="fc" id="L49">        return longestFact;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
